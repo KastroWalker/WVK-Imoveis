@@ -33,6 +33,7 @@ create table imovel(
     numero varchar(200) not null,
     bairro varchar(200) not null,
     cep varchar(8) not null,
+    complemento varchar(200) not null,
     valor_imovel int not null,
     vendedor_id int not null,
     primary key(imovel_id),
