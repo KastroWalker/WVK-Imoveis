@@ -30,7 +30,7 @@ create table cliente(
 create table imovel(
     imovel_id int not null auto_increment,
     endereco varchar(200) not null,
-    numero int not null,
+    numero varchar(200) not null,
     bairro varchar(200) not null,
     cep varchar(8) not null,
     complemento varchar(200) not null,
