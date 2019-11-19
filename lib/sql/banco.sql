@@ -27,7 +27,7 @@ create table cliente(
     primary key(cliente_id)
 );
 
-create table imoveis(
+create table imovel(
     imovel_id int not null auto_increment,
     endereco varchar(200) not null,
     numero varchar(200) not null,
