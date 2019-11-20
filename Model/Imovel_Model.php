@@ -1,5 +1,5 @@
 <?php 
-    Class Imovel{
+    Class Imovel_Model{
         private $imovel_id;
         private $endereco;
         private $numero;
@@ -62,17 +62,17 @@
             return $this->complemento = $complemento;
         }
 
-        public function getValor_imovel(){
+        public function getValorImovel(){
             return $this->valor_imovel;
         }  
-        public function setValor_imovel($valor_imovel){
+        public function setValorImovel($valor_imovel){
             return $this->valor_imovel = $valor_imovel;
         }
 
-        public function getVendedor_id(){
+        public function getVendedorId(){
             return $this->vendedor_id;
         }
-        public function setVendedor_id($vendedor_id){
+        public function setVendedorId($vendedor_id){
             return $this->vendedor_id = $vendedor_id;
         }
     }
