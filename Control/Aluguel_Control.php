@@ -29,12 +29,12 @@
             $sql = "insert into aluguel (data_inicial, data_final, valor_aluguel, vendedor_id, cliente_id, imovel_id) values (:data_inicial, :data_final, :valor_aluguel, :vendedor_id, :cliente_id, :imovel_id);";
             $d = $this->conexao->Conectar();
             $dados = $d->prepare($sql);
-            $dados->bindValue(":data_inicial", $data_inicial);
-            $dados->bindValue(":data_final", $data_final);
-            $dados->bindValue(":valor_aluguel", $valor_aluguel);
-            $dados->bindValue(":vendedor_id", $vendedor_id);
-            $dados->bindValue(":cliente_id", $cliente_id);
-            $dados->bindValue(":imovel_id", $imovel_id);
+            $dados->bindValue(":data_inicial", $this->dados->getDataInicial());
+            $dados->bindValue(":data_final", $this->dados->getDataFinal());
+            $dados->bindValue(":valor_aluguel", $this->dados->getValorAluguel());
+            $dados->bindValue(":vendedor_id", $this->dados->getVendedor_id());
+            $dados->bindValue(":cliente_id", $this->dados->getClienteId());
+            $dados->bindValue(":imovel_id", $this->dados->getImovelId());
 
             try {
                 $dados->execute();

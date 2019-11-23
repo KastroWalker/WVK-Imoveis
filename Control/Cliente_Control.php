@@ -29,12 +29,12 @@
             $sql = "insert into cliente (nome, contato, cpf, email, user, senha) values (:nome, :contato, :cpf, :email, :user, :senha);";
             $d = $this->conexao->Conectar();
             $dados = $d->prepare($sql);
-            $dados->bindValue(":nome", $nome);
-            $dados->bindValue(":contato", $contato);
-            $dados->bindValue(":cpf", $cpf);
-            $dados->bindValue(":email", $email);
-            $dados->bindValue(":user", $user);
-            $dados->bindValue(":senha", $senha);
+            $dados->bindValue(":nome", $this->dados->getNome());
+            $dados->bindValue(":contato", $this->dados->getContato());
+            $dados->bindValue(":cpf", $this->dados->getCpf());
+            $dados->bindValue(":email", $this->dados->getEmail());
+            $dados->bindValue(":user", $this->dados->getUser());
+            $dados->bindValue(":senha", $this->dados->getSenha());
 
             try {
                 $dados->execute();
@@ -43,5 +43,28 @@
             }
             header("Location: ");
         }
+
+    function atualizar($nome, $contato, $cpf, $email, $cliente_id){
+        $this->dados->setNome($nome);
+        $this->dados->setContato($contato);
+        $this->dados->setCpf($cpf);
+        $this->dados->setEmail($email);
+        $this->dados->setClienteId($cliente_id);
+
+        $sql = "update cliente set nome = :nome, contato = :contato, cpf = :cpf, email = :email);";
+        $d = $this->conexao->Conectar();
+        $dados = $d->prepare($sql);
+        $dados->bindValue(":nome", $this->dados->getNome());
+        $dados->bindValue(":contato", $this->dados->getContato());
+        $dados->bindValue(":cpf", $this->dados->getCpf());
+        $dados->bindValue(":email", $this->dados->getEmail());
+
+        try {
+            $dados->execute();
+        } catch (PDOException $e) {
+            echo "Erro ao cadastrar: " . $e;
+        }
+        header("Location: ");
+    }
     }
 ?>

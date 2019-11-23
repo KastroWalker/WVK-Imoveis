@@ -16,10 +16,10 @@
             $this->senha = "nullpass";
         }
 
-        public function getVendedor_id(){
+        public function getVendedorId(){
             return $this->vendedor_id;
         }
-        public function setVendedor_id($vendedor_id){
+        public function setVendedorId($vendedor_id){
             return $this->vendedor_id = $vendedor_id;
         }
 

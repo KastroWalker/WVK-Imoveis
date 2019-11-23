@@ -20,10 +20,10 @@
             $this->vendedor_id = 0;
         }
 
-        public function getImovel_id(){
+        public function getImovelId(){
             return $this->imovel_id;
         }
-        public function setImovel_id($imovel_id){
+        public function setImovelId($imovel_id){
             return $this->imovel_id = $imovel_id;
         }
 

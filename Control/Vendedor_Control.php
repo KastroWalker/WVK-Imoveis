@@ -28,11 +28,11 @@
             $sql = "insert into vendedor (nome, contato, email, user, senha) values (:nome, :contato, :email, :user, :senha);";
             $d = $this->conexao->Conectar();
             $dados = $d->prepare($sql);
-            $dados->bindValue(":nome", $nome);
-            $dados->bindValue(":contato", $contato);
-            $dados->bindValue(":email", $email);
-            $dados->bindValue(":user", $user);
-            $dados->bindValue(":senha", $senha);
+            $dados->bindValue(":nome", $this->dados->getNome());
+            $dados->bindValue(":contato", $this->dados->getContato());
+            $dados->bindValue(":email", $this->dados->getEmail());
+            $dados->bindValue(":user", $this->dados->getUser());
+            $dados->bindValue(":senha", $this->dados->getSenha());
 
             try {
                 $dados->execute();

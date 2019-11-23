@@ -24,19 +24,19 @@
             $this->dados->setValorAluguel($bairro);
             $this->dados->setVendedorId($cep);
             $this->dados->setClienteId($complemento);
-            $this->dados->setImovelId($valor_imovel);
+            $this->dados->setValorImovel($valor_imovel);
             $this->dados->setVendedorId($vendedor_id);
             
             $sql = "insert into imovel (endereco, numero, bairro, cep, complemento, valor_imovel, vendedor_id) values (:endereco, :numero, :bairro, :cep, :complemento, :valor_imovel, :vendedor_id);";
             $d = $this->conexao->Conectar();
             $dados = $d->prepare($sql);
-            $dados->bindValue(":endereco", $endereco);
-            $dados->bindValue(":numero", $numero);
-            $dados->bindValue(":bairro", $bairro);
-            $dados->bindValue(":cep", $cep);
-            $dados->bindValue(":complemento", $complemento);
-            $dados->bindValue(":valor_imovel", $valor_imovel);
-            $dados->bindValue(":vendedor_id", $vendedor_id);
+            $dados->bindValue(":endereco", $this->dados->getEndereco());
+            $dados->bindValue(":numero", $this->dados->getNumero());
+            $dados->bindValue(":bairro", $this->dados->getBairro());
+            $dados->bindValue(":cep", $this->dados->getCep());
+            $dados->bindValue(":complemento", $this->dados->getComplemento());
+            $dados->bindValue(":valor_imovel", $this->dados->getValorImovel());
+            $dados->bindValue(":vendedor_id", $this->dados->getVendedorId());
 
             try {
                 $dados->execute();
