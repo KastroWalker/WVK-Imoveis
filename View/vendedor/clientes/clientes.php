@@ -1,17 +1,14 @@
-<?php 
-    include '../menu.php';
-    include '../../../Control/Cliente_Control.php';
+<?php
+include '../menu.php';
+include '../../../Control/Cliente_Control.php';
 
-    $obj_cliente = new Cliente_Control();
+$obj_cliente = new Cliente_Control();
 
-    $dados = $obj_cliente->verDados();
-
-    foreach ($dados as $d) {
-        $id = $d['cliente_id'];
-    }
+$dados = $obj_cliente->verDados();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,11 +21,12 @@
     <link href="../../../lib/css/simple-sidebar.css" rel="stylesheet">
 
 </head>
+
 <body>
     <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
-        <?php 
-            slideBar("../home_vendedor.php", "clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
+        <?php
+        slideBar("../home_vendedor.php", "clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
         ?>
         <div id="page-content-wrapper">
             <header>
@@ -36,7 +34,7 @@
                     <button class="btn btn-primary" id="menu-toggle">Menu</button>
                 </nav>
                 <?php
-                    menu("Clientes" ,"clientes.php", "Cadastrar" , "cadastra_cliente.php");
+                menu("Clientes", "clientes.php", "Cadastrar", "cadastra_cliente.php");
                 ?>
             </header>
             <div class="container-fluid">
@@ -51,7 +49,15 @@
                             <th>Email</th>
                             <th>Ações</th>
                         </tr>
-                        <?php  ?>
+                        <?php
+                        foreach ($dados as $d) {
+                            echo "<td>".$d['cliente_id']."</td>";
+                            echo "<td>".$d['nome']."</td>";
+                            echo "<td>".$d['contato']."</td>";
+                            echo "<td>".$d['email']."</td>";
+                            echo "<td>".$d['user']."</td>";
+                        }
+                        ?>
                     </table>
                 </div>
             </div>
@@ -71,4 +77,5 @@
         });
     </script>
 </body>
+
 </html>

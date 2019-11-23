@@ -51,5 +51,5 @@ create table aluguel(
     primary key(aluguel_id),
     foreign key(vendedor_id) references vendedor(vendedor_id),
     foreign key(cliente_id) references cliente(cliente_id),
-    foreign key(imovel_id) references imoveis(imovel_id)
+    foreign key(imovel_id) references imovel(imovel_id)
 );

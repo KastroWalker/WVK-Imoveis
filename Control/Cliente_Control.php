@@ -1,6 +1,6 @@
 <?php
-    include ("../Model/Cliente_Model.php");
-    include ("../Banco/Conexao.php");
+    include ("../../../Model/Cliente_Model.php");
+    include ("../../../Banco/Conexao.php");
 	class Cliente_Control{
         private $dados;
         private $conexao;
