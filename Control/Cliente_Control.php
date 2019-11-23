@@ -1,7 +1,7 @@
 <?php
     include ("../Model/Cliente_Model.php");
     include ("../Banco/Conexao.php");
-	class Aluguel_Control{
+	class Cliente_Control{
         private $dados;
         private $conexao;
 

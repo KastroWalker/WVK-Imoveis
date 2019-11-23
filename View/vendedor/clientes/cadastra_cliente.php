@@ -1,0 +1,94 @@
+<?php 
+    include '../menu.php';
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Sistema de Alugel de Imóveis">
+    <meta name="author" content="Victor Castro">
+
+    <title>Clientes - WVK Imóveis</title>
+
+    <link href="../../../lib/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../lib/css/simple-sidebar.css" rel="stylesheet">
+
+    <style type="text/css">
+        label{
+            font-weight: bold;
+        }
+
+        #div_cadastro_clientes{
+            width: 60%;
+            margin: auto; 
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">WVK Imóveis</h1>
+    <div class="d-flex" id="wrapper">
+        <?php 
+            slideBar("../home_vendedor.php", "clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
+        ?>
+        <div id="page-content-wrapper">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <button class="btn btn-primary" id="menu-toggle">Menu</button>
+                </nav>
+                <?php
+                    menu("Clientes" ,"clientes.php", "Cadastrar" , "cadastra_cliente.php");
+                ?>
+            </header>
+            <div class="container-fluid">
+                <div id="div_cadastro_clientes">
+                    <h2 style="text-align: center;">Cadastro Clientes</h2>
+                    <form method="POST" action="../../../Control/Cliente_Control.php?acao=cadastrar">
+                        <div class="form-group">
+                            <label for="nome">Nome: *</label>
+                            <input type="text" name="campo_nome" id="nome" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="contato">Contato: *</label>
+                            <input type="text" name="campo_contato" id="contato" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf">CPF: *</label>
+                            <input type="text" name="campo_cpf" id="cpf" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail: *</label>
+                            <input type="email" name="campo_email" id="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="user">Usuário: </label>
+                            <input type="text" name="campo_ususario" id="user" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha: </label>
+                            <input type="pass" name="campo_senha" id="senha" class="form-control">
+                        </div>
+                        <div class="div_btns">
+                            <button class="btn btn-success">Cadastrar</button>
+                            <button class="btn btn-primary">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align: center;">
+        <script src="../../../lib/js/jquery.js"></script>
+        <script src="../../../lib/js/bootstrap/bootstrap.min.js"></script>
+        <h2>Direitos</h2>
+        <p>2019 &copy; Copyright - Todos os direitos reservados | Tico && Teco.</p>
+    </footer>
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+</body>
+</html>
