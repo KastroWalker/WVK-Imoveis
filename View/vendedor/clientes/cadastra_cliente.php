@@ -1,5 +1,6 @@
 <?php 
     include '../menu.php';
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,7 +44,26 @@
             <div class="container-fluid">
                 <div id="div_cadastro_clientes">
                     <h2 style="text-align: center;">Cadastro Clientes</h2>
-                    <form method="POST" action="../../../Control/Cliente_Control.php?acao=cadastrar">
+                    <?php 
+                        if(isset($_SESSION['cliente_cadastrado'])){
+                            echo "
+                                <div class='alert alert-success text-center'>
+                                    Cliente Cadastrado com Sucesso!<br/>
+                                    Clique <a href='clientes.php'><strong>aqui</strong></a> para ver os Cliente!
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['cliente_cadastrado']);
+                        if(isset($_SESSION['cliente_nao_cadastrado'])){
+                            echo "
+                                <div class='alert alert-danger text-center'>
+                                    Erro ao cadastrar o Cliente!
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['cliente_nao_cadastrado']);
+                    ?>
+                    <form method="POST" action="cadastrar_cliente.php?acao=cadastrar">
                         <div class="form-group">
                             <label for="nome">Nome: *</label>
                             <input type="text" name="campo_nome" id="nome" class="form-control">
@@ -62,15 +82,15 @@
                         </div>
                         <div class="form-group">
                             <label for="user">Usuário: </label>
-                            <input type="text" name="campo_ususario" id="user" class="form-control">
+                            <input type="text" name="campo_usuario" id="user" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha: </label>
-                            <input type="pass" name="campo_senha" id="senha" class="form-control">
+                            <input type="password" name="campo_senha" id="senha" class="form-control">
                         </div>
                         <div class="div_btns">
-                            <button class="btn btn-success">Cadastrar</button>
-                            <button class="btn btn-primary">Limpar</button>
+                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                            <button type="reset" class="btn btn-primary">Limpar</button>
                         </div>
                     </form>
                 </div>

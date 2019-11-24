@@ -1,10 +1,10 @@
 <?php
-include '../menu.php';
-include '../../../Control/Cliente_Control.php';
+    include '../menu.php';
+    include '../../../Control/Cliente_Control.php';
 
-$obj_cliente = new Cliente_Control();
+    $obj_cliente = new Cliente_Control();
 
-$dados = $obj_cliente->verDados();
+    $dados = $obj_cliente->verDados();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -1,7 +1,10 @@
 <?php
-    include ("../../../Model/Cliente_Model.php");
-    include ("../../../Banco/Conexao.php");
-	class Cliente_Control{
+    include "../../../Model/Cliente_Model.php";
+    include "../../../Banco/Conexao.php";
+
+    session_start();
+	
+    class Cliente_Control{
         private $dados;
         private $conexao;
 
@@ -38,34 +41,36 @@
 
             try {
                 $dados->execute();
+                return true;
             } catch (PDOException $e){
                 echo "Erro ao cadastrar: ". $e->getMessage();
+                $_SESSION['cliente_nao_cadastrado'] = true;
+                return false;
+            }
+        }
+
+        function atualizar($nome, $contato, $cpf, $email, $cliente_id){
+            $this->dados->setNome($nome);
+            $this->dados->setContato($contato);
+            $this->dados->setCpf($cpf);
+            $this->dados->setEmail($email);
+            $this->dados->setClienteId($cliente_id);
+
+            $sql = "update cliente set nome = :nome, contato = :contato, cpf = :cpf, email = :email where cliente_id = :cliente_id);";
+            $d = $this->conexao->Conectar();
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":nome", $this->dados->getNome());
+            $dados->bindValue(":contato", $this->dados->getContato());
+            $dados->bindValue(":cpf", $this->dados->getCpf());
+            $dados->bindValue(":email", $this->dados->getEmail());
+            $dados->bindValue(":cliente_id", $this->dados->getClienteId());
+
+            try {
+                $dados->execute();
+            } catch (PDOException $e) {
+                echo "Erro ao atualizar: " . $e->getMessage();
             }
             header("Location: ");
         }
-
-    function atualizar($nome, $contato, $cpf, $email, $cliente_id){
-        $this->dados->setNome($nome);
-        $this->dados->setContato($contato);
-        $this->dados->setCpf($cpf);
-        $this->dados->setEmail($email);
-        $this->dados->setClienteId($cliente_id);
-
-        $sql = "update cliente set nome = :nome, contato = :contato, cpf = :cpf, email = :email where cliente_id = :cliente_id);";
-        $d = $this->conexao->Conectar();
-        $dados = $d->prepare($sql);
-        $dados->bindValue(":nome", $this->dados->getNome());
-        $dados->bindValue(":contato", $this->dados->getContato());
-        $dados->bindValue(":cpf", $this->dados->getCpf());
-        $dados->bindValue(":email", $this->dados->getEmail());
-        $dados->bindValue(":cliente_id", $this->dados->getClienteId());
-
-        try {
-            $dados->execute();
-        } catch (PDOException $e) {
-            echo "Erro ao atualizar: " . $e->getMessage();
-        }
-        header("Location: ");
-    }
     }
 ?>
