@@ -53,3 +53,11 @@ create table aluguel(
     foreign key(cliente_id) references cliente(cliente_id),
     foreign key(imovel_id) references imovel(imovel_id)
 );
+
+create table status(
+    status_id int not null auto_increment,
+    status int not null,
+    imovel_id int not null,
+    primary key(status_id),
+    foreign key(imovel_id) references imovel(imovel_id)
+);
