@@ -39,7 +39,7 @@
             try {
                 $dados->execute();
             } catch (PDOException $e){
-                echo "Erro ao cadastrar: ". $e;
+                echo "Erro ao cadastrar: ". $e->getMessage();
             }
             header("Location: ");
         }
@@ -51,18 +51,19 @@
         $this->dados->setEmail($email);
         $this->dados->setClienteId($cliente_id);
 
-        $sql = "update cliente set nome = :nome, contato = :contato, cpf = :cpf, email = :email);";
+        $sql = "update cliente set nome = :nome, contato = :contato, cpf = :cpf, email = :email where cliente_id = :cliente_id);";
         $d = $this->conexao->Conectar();
         $dados = $d->prepare($sql);
         $dados->bindValue(":nome", $this->dados->getNome());
         $dados->bindValue(":contato", $this->dados->getContato());
         $dados->bindValue(":cpf", $this->dados->getCpf());
         $dados->bindValue(":email", $this->dados->getEmail());
+        $dados->bindValue(":cliente_id", $this->dados->getClienteId());
 
         try {
             $dados->execute();
         } catch (PDOException $e) {
-            echo "Erro ao cadastrar: " . $e;
+            echo "Erro ao atualizar: " . $e->getMessage();
         }
         header("Location: ");
     }
