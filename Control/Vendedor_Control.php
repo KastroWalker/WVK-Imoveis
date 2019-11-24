@@ -25,7 +25,7 @@
             $this->dados->setContato($contato);
             $this->dados->setEmail($email);
             $this->dados->setUser($user);
-            $this->dados->setsenha($senha);
+            $this->dados->setSenha($senha);
             
             $sql = "insert into vendedor (nome, contato, email, user, senha) values (:nome, :contato, :email, :user, :senha);";
             $d = $this->conexao->Conectar();
@@ -44,13 +44,40 @@
                 $_SESSION['user_nao_cadastrado'] = true;
                 return false;
             }
-            header("Location: ");
+        }
+
+        function logar($user, $senha){
+            $this->dados->setUser($user);
+            $this->dados->setSenha($senha);
+
+            $sql = "select vendedor_id, user, nome from vendedor where user = :user and senha = :senha;";
+
+            $d = $this->conexao->Conectar();
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":user", $this->dados->getUser());
+            $dados->bindValue(":senha", $this->dados->getSenha());
+            $dados->execute();
+            
+            $users = $dados->fetchAll();
+            
+            if(count($users) <= 0){
+                $_SESSION['nao_cadastrado'] = true;
+
+                header('Location: ../View/login.php');
+            }else{
+                $user = $users[0];
+
+                $_SESSION['vendedor_id'] = $user['vendedor_id'];
+                $_SESSION['nome_vendedor'] = $user['nome'];
+
+                header('Location: ../View/vendedor/home_vendedor.php');
+            }
         }
     }
 
-    @$acao = $_RESQUEST['acao'];
-
-    if($acao = "cadastrar"){
+    @$acao = $_REQUEST['acao'];
+    
+    if($acao == "cadastrar"){
         $nome = $_POST['campo_nome'];
         $contato = $_POST['campo_contato'];
         $email = $_POST['campo_email'];
@@ -71,4 +98,12 @@
         }
 
         header('Location: ../View/cadastro.php');
+    }else if($acao == "logar"){
+        echo "teste<br>";
+        $user = $_POST['campo_usuario'];
+        $senha = $_POST['campo_senha'];
+
+        $vendedor = new Aluguel_Control();
+
+        $vendedor->logar($user, $senha);
     }
