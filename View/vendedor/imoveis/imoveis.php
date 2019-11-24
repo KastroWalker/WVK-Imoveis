@@ -17,6 +17,11 @@ include '../menu.php';
 </head>
 
 <body>
+    <?php
+        include('../../../Control/Imovel_Control.php');
+        $obj_imovel = new Imovel_Control();
+        $dados = $obj_imovel->verDados();
+    ?>
     <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
         <?php
@@ -41,8 +46,21 @@ include '../menu.php';
                             <th>Número</th>
                             <th>Cep</th>
                             <th>Status</th>
-                            <th>Cliente</th>
+                            <th>Vendedor</th>
                         </tr>
+                        <?php
+                            foreach ($dados as $d) {
+                                echo "<tr>";
+                                echo "<td>".$d['imovel_id']."</td>";
+                                echo "<td>".$d['endereco']."</td>";
+                                echo "<td>".$d['numero']."</td>";
+                                echo "<td>".$d['cep']."</td>";
+                                echo "<td>".$d['status']."</td>";
+                                echo "<td>".$d['vendedor_id']."</td>";
+                                echo "</tr>";
+
+                            }
+                        ?>
                     </table>
                 </div>
             </div>

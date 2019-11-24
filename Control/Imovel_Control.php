@@ -1,6 +1,6 @@
 <?php
-    include ("../Model/Imovel_Model.php");
-    include ("../Banco/Conexao.php");
+    include ("../../../Model/Imovel_Model.php");
+    include ("../../../Banco/Conexao.php");
     session_start();
 
 	class Imovel_Control{

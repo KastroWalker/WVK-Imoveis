@@ -51,11 +51,13 @@ $dados = $obj_cliente->verDados();
                         </tr>
                         <?php
                         foreach ($dados as $d) {
+                            echo "<tr>";
                             echo "<td>".$d['cliente_id']."</td>";
                             echo "<td>".$d['nome']."</td>";
                             echo "<td>".$d['contato']."</td>";
                             echo "<td>".$d['email']."</td>";
                             echo "<td>".$d['user']."</td>";
+                            echo "</tr>";
                         }
                         ?>
                     </table>
