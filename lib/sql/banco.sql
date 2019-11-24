@@ -56,7 +56,7 @@ create table aluguel(
 
 create table status(
     status_id int not null auto_increment,
-    status int not null,
+    status boolean not null,
     imovel_id int not null,
     primary key(status_id),
     foreign key(imovel_id) references imovel(imovel_id)
