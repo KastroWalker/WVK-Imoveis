@@ -1,0 +1,13 @@
+h2, p{
+    text-align: center;
+}
+
+#div_login, #div_cadastro{
+    width: 50%;
+    margin: auto;
+}
+
+#p_cadastro, header{
+    margin-top: 15px;
+    margin-bottom: 15px; 
+}
