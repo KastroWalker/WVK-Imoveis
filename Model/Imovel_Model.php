@@ -7,6 +7,7 @@
         private $cep;
         private $complemento;
         private $valor_imovel;
+        private $status;
         private $vendedor_id;
 
         public function __construct(){
@@ -17,6 +18,7 @@
             $this->cep = "000000";
             $this->complemento = "null";
             $this->valor_imovel = 0;
+            $this->status = FALSE;
             $this->vendedor_id = 0;
         }
 
@@ -74,6 +76,13 @@
         }
         public function setVendedorId($vendedor_id){
             return $this->vendedor_id = $vendedor_id;
+        }
+
+        public function getStatus(){
+            return $this->status;
+        }
+        public function setStatus($status){
+            return $this->status = $status;
         }
     }
 ?>

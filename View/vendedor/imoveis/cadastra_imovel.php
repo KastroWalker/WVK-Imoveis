@@ -1,5 +1,7 @@
 <?php 
     include '../menu.php';
+    session_start();
+    $id_vendedor = $_SESSION['vendedor_id'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,7 +45,27 @@
             <div class="container-fluid">
                 <div id="div_cadastro_clientes">
                     <h2 style="text-align: center;">Cadastro Imóvel</h2>
-                    <form method="POST" action="../../../Control/Aluguel_Control.php?acao=cadastrar">
+                    <?php 
+                        if(isset($_SESSION['imovel_cadastrado'])){
+                            echo "
+                                <div class='alert alert-success text-center'>
+                                    Imóvel Cadastrado com Sucesso!<br/>
+                                    Clique <a href='imoveis.php'><strong>aqui</strong></a> para ver os Imóveis!
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['imoval_cadastrado']);
+                        if(isset($_SESSION['imoval_nao_cadastrado'])){
+                            echo "
+                                <div class='alert alert-danger text-center'>
+                                    Erro ao cadastrar o Imóvel!
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['imoval_nao_cadastrado']);
+                    ?>
+                    <form method="POST" action="../../../Control/Imovel_Control.php?acao=cadastrar">
+                        <input type="hidden" value="<?php echo $id_vendedor; ?>" name="campo_id" id="id">
                         <div class="form-group">
                             <label for="endereco">Endereço: *</label>
                             <input type="text" name="campo_endereco" id="endereco" class="form-control">
