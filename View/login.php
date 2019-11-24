@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,15 +22,26 @@
     <main>
         <div class="container">
             <h2>Login</h2>
+            
             <div id="div_login">
-                <form action="../Control/login.php" method="POST">
+                <?php 
+                    if(isset($_SESSION['nao_cadastrado'])){
+                        echo "
+                            <div class='alert alert-danger' role='alert'>
+                                Usuário ou senha incorreta!
+                            </div>
+                        ";
+                    }
+                    unset($_SESSION['nao_cadastrado']);
+                ?>
+                <form action="../Control/Vendedor_Control.php?acao=logar" method="POST">
                     <div class="form-group">
                         <label for="usuario">Usuário: </label>
-                        <input type="text" class="form-control" id="usuario" name="campo_ususario" required>
+                        <input type="text" class="form-control" id="usuario" name="campo_usuario" required>
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha: </label>
-                        <input type="pass" class="form-control" id="senha" name="campo_senha" required>
+                        <input type="password" class="form-control" id="senha" name="campo_senha" required>
                     </div>
                     <div id="div_btns">
                         <button class="btn btn-success">Entrar</button>
