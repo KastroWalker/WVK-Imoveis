@@ -1,5 +1,8 @@
 <?php 
     include 'menu.php';
+    session_start();
+    $nome_vendedor = $_SESSION['nome_vendedor'];
+    $id_vendedor = $_SESSION['vendedor_id'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,15 +29,12 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                     <button class="btn btn-primary" id="menu-toggle">Menu</button>
                 </nav>
-                <?php
-                    #menu("Informações" ,"informacoes.php", "Editar" , "editar.php");
-                ?>
             </header>
             <div class="container-fluid">
                 <h2>
                     <?php 
                         mostra_turno();
-                        echo " Seja Bem vindo(a) Victor!";
+                        echo " Seja Bem vindo(a) $nome_vendedor !";
                     ?>
                 </h2>
                 <h3>O que deseja fazer?</h3>
