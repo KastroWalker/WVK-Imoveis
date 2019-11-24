@@ -35,6 +35,7 @@ create table imovel(
     cep varchar(8) not null,
     complemento varchar(200) not null,
     valor_imovel int not null,
+    status boolean not null,
     vendedor_id int not null,
     primary key(imovel_id),
     foreign key(vendedor_id) references vendedor(vendedor_id)
@@ -51,13 +52,5 @@ create table aluguel(
     primary key(aluguel_id),
     foreign key(vendedor_id) references vendedor(vendedor_id),
     foreign key(cliente_id) references cliente(cliente_id),
-    foreign key(imovel_id) references imovel(imovel_id)
-);
-
-create table status(
-    status_id int not null auto_increment,
-    status boolean not null,
-    imovel_id int not null,
-    primary key(status_id),
     foreign key(imovel_id) references imovel(imovel_id)
 );
