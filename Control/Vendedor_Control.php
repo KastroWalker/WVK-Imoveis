@@ -3,7 +3,7 @@
     include ("../Banco/Conexao.php");
 	session_start();
 
-    class Aluguel_Control{
+    class Vendedor_Control{
         private $dados;
         private $conexao;
 
@@ -43,6 +43,47 @@
                 echo "Erro ao cadastrar: ". $e;
                 $_SESSION['user_nao_cadastrado'] = true;
                 return false;
+            }
+        }
+
+        function atualizar($nome, $contato, $email, $user, $vendedor_id){
+            $this->dados->setNome($nome);
+            $this->dados->setContato($contato);
+            $this->dados->setEmail($email);
+            $this->dados->setUser($user);
+            $this->dados->setVendedorId($vendedor_id);
+
+            $sql = "update vendedor set nome = :nome, contato = :contato, email = :email, user = :user where vendedor_id = :vendedor_id);";
+            $d = $this->conexao->Conectar();
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":nome", $this->dados->getNome());
+            $dados->bindValue(":contato", $this->dados->getContato());
+            $dados->bindValue(":email", $this->dados->getEmail());
+            $dados->bindValue(":user", $this->dados->getUser());
+            $dados->bindValue(":vendedor_id", $this->dados->getVendedorId());
+
+            try {
+                $dados->execute();
+            } catch (PDOException $e) {
+                echo "Erro ao atualizar: " . $e->getMessage();
+            }
+        }
+
+        function deletar($vendedor_id)
+        {
+            $this->dados->setVendedorId($vendedor_id);
+
+            $d = $this->conexao->Conectar();
+
+            $sql = "delete * from vendedor where vendedor_id = :vendedor_id";
+
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":vendedor_id", $this->dados->getVendedorId());
+
+            try {
+                $dados->execute();
+            } catch (PDOException $e) {
+                echo "Erro ao apagar " . $e->getMessage();
             }
         }
 
@@ -91,7 +132,7 @@
         echo $senha."<br>";
 
         
-        $vendedor = new Aluguel_Control();
+        $vendedor = new Vendedor_Control();
 
         if($vendedor->cadastrar($nome, $contato, $email, $user, $senha)){
             $_SESSION['user_cadastrado'] = true;

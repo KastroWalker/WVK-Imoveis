@@ -47,7 +47,7 @@
                 return true;
             } catch (PDOException $e){
                 echo "Erro ao cadastrar: ".$e->getMessage();
-                $_SESSION['imoval_nao_cadastrado'] = true;
+                $_SESSION['imovel_nao_cadastrado'] = true;
                 return false;
             }
         }
@@ -83,6 +83,23 @@
                 $dados->execute();
             } catch (PDOException $e) {
                 echo "Erro ao atualizar ".$e->getMessage();
+            }
+        }
+
+        function deletar($imovel_id){
+            $this->dados->setImovelId($imovel_id);
+
+            $d = $this->conexao->Conectar();
+
+            $sql = "delete * from imovel where imovel_id = :imovel_id";
+
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":imovel_id", $this->dados->getImovelId());
+
+            try {
+                $dados->execute();
+            } catch (PDOException $e) {
+                echo "Erro ao apagar " . $e->getMessage();
             }
         }
     }
