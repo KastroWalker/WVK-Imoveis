@@ -1,7 +1,9 @@
 <?php
     include ("../Model/Vendedor_Model.php");
     include ("../Banco/Conexao.php");
-	class Aluguel_Control{
+	session_start();
+
+    class Aluguel_Control{
         private $dados;
         private $conexao;
 
@@ -36,9 +38,37 @@
 
             try {
                 $dados->execute();
+                return true;
             } catch (PDOException $e){
                 echo "Erro ao cadastrar: ". $e;
+                $_SESSION['user_nao_cadastrado'] = true;
+                return false;
             }
             header("Location: ");
         }
+    }
+
+    @$acao = $_RESQUEST['acao'];
+
+    if($acao = "cadastrar"){
+        $nome = $_POST['campo_nome'];
+        $contato = $_POST['campo_contato'];
+        $email = $_POST['campo_email'];
+        $user = $_POST['campo_user'];
+        $senha = $_POST['campo_senha'];
+
+        echo $nome."<br>";
+        echo $contato."<br>";
+        echo $email."<br>";
+        echo $user."<br>";
+        echo $senha."<br>";
+
+        
+        $vendedor = new Aluguel_Control();
+
+        if($vendedor->cadastrar($nome, $contato, $email, $user, $senha)){
+            $_SESSION['user_cadastrado'] = true;
+        }
+
+        header('Location: ../View/cadastro.php');
     }

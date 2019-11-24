@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,8 +22,27 @@
     <main>
         <div class="container">
             <h2>Cadastro</h2>
+            <?php 
+                if(isset($_SESSION['user_cadastrado'])){
+                    echo "
+                        <div class='alert alert-success text-center'>
+                            Usuário Cadastrado com Sucesso!<br/>
+                            Clique <a href='login.php'><strong>aqui</strong></a> para fazer o login!
+                        </div>
+                    ";
+                }
+                unset($_SESSION['user_cadastrado']);
+                if(isset($_SESSION['user_nao_cadastrado'])){
+                    echo "
+                        <div class='alert alert-danger text-center'>
+                            Erro ao cadastrar o usuário!
+                        </div>
+                    ";
+                }
+                unset($_SESSION['user_nao_cadastrado']);
+            ?>
             <div id="div_cadastro">
-                <form action="" method="POST">
+                <form action="../Control/Vendedor_Control.php?acao=cadastrar" method="POST">
                     <div class="form-group">
                         <label for="nome">Nome: *</label>
                         <input type="text" id="nome" name="campo_nome" class="form-control">
@@ -28,10 +50,6 @@
                     <div class="form-group">
                         <label for="contato">Contato: *</label>
                         <input type="text" id="contato" name="campo_contato" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="cpf">CPF: *</label>
-                        <input type="text" id="cpf" name="campo_cpf" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail: *</label>
