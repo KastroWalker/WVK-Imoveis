@@ -12,8 +12,9 @@
     <title>Aluguel - WVK Imóveis</title>
 
     <link href="../../../lib/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../lib/css/jquery-ui.min.css" rel="stylesheet">
     <link href="../../../lib/css/simple-sidebar.css" rel="stylesheet">
-
+    
     <style type="text/css">
         label{
             font-weight: bold;
@@ -57,8 +58,8 @@
                             <input type="number" class="form-control" id="id_imovel">
                         </div>
                         <div class="form-group">
-                            <label for="id_cliente">Cliente: *</label>
-                            <input type="number" class="form-control" id="id_cliente">
+                            <label for="id_cliente">CPF Cliente: *</label>
+                            <input type="text" class="form-control auto" id="id_cliente">
                         </div>
                         <div class="form-group">
                             <label for="valor">Valor: </label>
@@ -76,6 +77,7 @@
 
     <footer style="text-align: center;">
         <script src="../../../lib/js/jquery.js"></script>
+        <script src="../../../lib/js/jquery-ui.min.js"></script>
         <script src="../../../lib/js/bootstrap/bootstrap.min.js"></script>
         <h2>Direitos</h2>
         <p>2019 &copy; Copyright - Todos os direitos reservados | Tico && Teco.</p>
@@ -84,6 +86,12 @@
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
+        });
+        $(function() {
+            $(".auto").autocomplete({
+                source: "search.php",
+                minLength: 3
+            });             
         });
     </script>
 </body>
