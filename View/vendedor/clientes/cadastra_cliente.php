@@ -66,19 +66,19 @@
                     <form method="POST" action="cadastrar_cliente.php?acao=cadastrar">
                         <div class="form-group">
                             <label for="nome">Nome: *</label>
-                            <input type="text" name="campo_nome" id="nome" class="form-control">
+                            <input type="text" name="campo_nome" id="nome" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="contato">Contato: *</label>
-                            <input type="text" name="campo_contato" id="contato" class="form-control">
+                            <input type="text" name="campo_contato" id="contato" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="cpf">CPF: *</label>
-                            <input type="text" name="campo_cpf" id="cpf" class="form-control">
+                            <input type="text" name="campo_cpf" id="cpf" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail: *</label>
-                            <input type="email" name="campo_email" id="email" class="form-control">
+                            <input type="email" name="campo_email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="user">Usuário: </label>
