@@ -40,6 +40,8 @@
                 $dados->execute();
             } catch (PDOException $e){
                 echo "Erro ao cadastrar: ". $e->getMessage();
+                $_SESSION['aluguel_nao_cadastrado'] = true;
+                return false;
             }
             header("Location: ");
         }
@@ -69,7 +71,23 @@
             } catch (PDOException $e) {
                 echo "Erro ao atualizar: " . $e->getMessage();
             }
-            header("Location: ");
+        }
+
+        function deletar($aluguel_id){
+            $this->dados->setAluguelId($aluguel_id);
+            
+            $d = $this->conexao->Conectar();
+            
+            $sql = "delete * from aluguel where aluguel_id = :aluguel_id";
+
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":aluguel_id", $this->dados->getAluguelId());
+
+            try {
+                $dados->execute();
+            } catch (PDOException $e) {
+                echo "Erro ao apagar ".$e->getMessage();
+            }
         }
     }
 ?>

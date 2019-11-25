@@ -1,9 +1,14 @@
 <?php
+<<<<<<< HEAD
     include "../../../Model/Cliente_Model.php";
     include "../../../Banco/Conexao.php";
 
     session_start();
 	
+=======
+    include ("../../../Model/Cliente_Model.php");
+    include ("../../../Banco/Conexao.php");
+>>>>>>> 175385179c5fe50a69a9ad12d522f6d2bfb85e9c
     class Cliente_Control{
         private $dados;
         private $conexao;
@@ -70,7 +75,27 @@
             } catch (PDOException $e) {
                 echo "Erro ao atualizar: " . $e->getMessage();
             }
+<<<<<<< HEAD
             header("Location: ");
+=======
+        }
+        
+        function deletar($cliente_id){
+            $this->dados->setClienteId($cliente_id);
+
+            $d = $this->conexao->Conectar();
+
+            $sql = "delete * from cliente where cliente_id = :cliente_id";
+
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":cliente_id", $this->dados->getClienteId());
+
+            try {
+                $dados->execute();
+            } catch (PDOException $e) {
+                echo "Erro ao apagar " . $e->getMessage();
+            }
+>>>>>>> 175385179c5fe50a69a9ad12d522f6d2bfb85e9c
         }
     }
 ?>
