@@ -144,7 +144,7 @@
         $user = $_POST['campo_usuario'];
         $senha = $_POST['campo_senha'];
 
-        $vendedor = new Aluguel_Control();
+        $vendedor = new Vendedor_Control();
 
         $vendedor->logar($user, $senha);
     }
