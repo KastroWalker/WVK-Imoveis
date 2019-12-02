@@ -28,7 +28,7 @@
     <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
         <?php
-        slideBar("../home_vendedor.php", "clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
+        slideBar("../../../img/icon.webp","../home_vendedor.php", "clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
         ?>
         <div id="page-content-wrapper">
             <header>
@@ -59,8 +59,8 @@
                             #echo "<td>".$d['cliente_id']."</td>";
                             echo "<td>".$d['nome']."</td>";
                             echo "<td>".$d['contato']."</td>";
+                            echo "<td>".$d['cpf']."</td>";
                             echo "<td>".$d['email']."</td>";
-                            echo "<td>".$d['user']."</td>";
                             echo "</tr>";
                             $x++;
                         }
