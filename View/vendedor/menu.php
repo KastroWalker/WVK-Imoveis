@@ -23,7 +23,7 @@
     function slideBar($home, $cliente, $aluguel, $imoveis, $usuario, $sair){
         echo ("
             <div class='bg-light border-right' id='sidebar-wrapper'>
-            <div class='sidebar-heading'>Menu</div>
+            <div class='sidebar-heading'><img src='../../img/icon.webp' style='margin-right: 5px; margin-bottom: 5px; width: 20px; height: 20px;'></img>Menu</div>
                 <div class='list-group list-group-flush'>
                     <a href='$home' class='list-group-item list-group-item-action bg-light'>Home</a>
                     <a href='$cliente' class='list-group-item list-group-item-action bg-light'>Clientes</a>

@@ -14,6 +14,8 @@ include '../menu.php';
 
     <link href="../../../lib/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="../../../lib/css/simple-sidebar.css" rel="stylesheet">
+
+    <link rel="icon" href="../../../img/icon.webp" type="image/x-icon" />
 </head>
 
 <body>

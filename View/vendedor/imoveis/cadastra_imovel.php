@@ -13,6 +13,8 @@
 
     <title>Imóveis - WVK Imóveis</title>
 
+    <link rel="icon" href="../../../img/icon.webp" type="image/x-icon" />
+
     <link href="../../../lib/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="../../../lib/css/simple-sidebar.css" rel="stylesheet">
 
@@ -54,17 +56,17 @@
                                 </div>
                             ";
                         }
-                        unset($_SESSION['imoval_cadastrado']);
-                        if(isset($_SESSION['imoval_nao_cadastrado'])){
+                        unset($_SESSION['imovel_cadastrado']);
+                        if(isset($_SESSION['imovel_nao_cadastrado'])){
                             echo "
                                 <div class='alert alert-danger text-center'>
                                     Erro ao cadastrar o Imóvel!
                                 </div>
                             ";
                         }
-                        unset($_SESSION['imoval_nao_cadastrado']);
+                        unset($_SESSION['imovel_nao_cadastrado']);
                     ?>
-                    <form method="POST" action="../../../Control/Imovel_Control.php?acao=cadastrar">
+                    <form method="POST" action="cadastrar_imovel.php?acao=cadastrar">
                         <input type="hidden" value="<?php echo $id_vendedor; ?>" name="campo_id" id="id">
                         <div class="form-group">
                             <label for="endereco">Endereço: *</label>

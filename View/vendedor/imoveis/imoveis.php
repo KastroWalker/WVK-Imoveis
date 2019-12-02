@@ -12,6 +12,8 @@ include '../menu.php';
 
     <title>Imoveis - WVK Imóveis</title>
 
+    <link rel="icon" href="../../../img/icon.webp" type="image/x-icon" />
+
     <link href="../../../lib/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="../../../lib/css/simple-sidebar.css" rel="stylesheet">
 </head>
