@@ -55,7 +55,7 @@
             return $this->senha;
         }
         public function setSenha($senha){
-            return $this->senha = $senha;
+            return $this->senha = md5($senha);
         }
     }
 ?>
