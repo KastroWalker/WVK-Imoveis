@@ -1,13 +1,12 @@
 <?php 
     include '../menu.php';
-<<<<<<< HEAD
     session_start();
+
     $icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
-=======
+
     include('../../../Control/Imovel_Control.php');
     $obj_imovel = new Imovel_Control();
     $dados = $obj_imovel->verDados();
->>>>>>> a2808c1823c69e1c42eca9f7778cfbb30489a9f4
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
