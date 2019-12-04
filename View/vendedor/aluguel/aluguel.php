@@ -1,5 +1,8 @@
 <?php
 include '../menu.php';
+include '../../../Control/Aluguel_Control.php';
+$obj_aluguel = new Aluguel_Control();
+$dados = $obj_aluguel->verDados();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -45,6 +48,19 @@ include '../menu.php';
                             <th>Cliente</th>
                             <th>Vendedor</th>
                         </tr>
+                        <?php
+                            foreach ($dados as $d) {
+                                echo "<tr>";
+                                echo "<td>".$d['aluguel_id']."</td>";
+                                echo "<td>".$d['data_inicial']."</td>";
+                                echo "<td>".$d['data_final']."</td>";
+                                echo "<td>".$d['imovel_id']."</td>";
+                                echo "<td>".$d['cliente_id']."</td>";
+                                echo "<td>".$d['vendedor_id']."</td>";
+                                echo "</tr>";
+
+                            }
+                        ?>
                     </table>
                 </div>
             </div>

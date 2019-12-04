@@ -1,6 +1,8 @@
 <?php 
     include '../menu.php';
-    session_start();
+    include('../../../Control/Imovel_Control.php');
+    $obj_imovel = new Imovel_Control();
+    $dados = $obj_imovel->verDados();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -77,7 +79,16 @@
                         </div>
                         <div class="form-group">
                             <label for="id_imovel">Imovel: *</label>
-                            <input type="number" class="form-control" id="id_imovel" name="imovel">
+                            <!--input type="number" class="form-control" id="id_imovel" name="imovel"-->
+                            <select name="imovel" id="id_imovel" class="form-control">
+                                <?php 
+                                    foreach ($dados as $d) {
+                                        echo "<option value='".$d['imovel_id']."'>";
+                                        echo $d['endereco']." Nº: ".$d['numero']."CEP: ".$d['cep'];
+                                        echo "</option>";
+                                    }
+                                ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="id_cliente">CPF Cliente: *</label>
