@@ -1,6 +1,5 @@
 <?php 
     include '../menu.php';
-    session_start();
 
     $icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
 
