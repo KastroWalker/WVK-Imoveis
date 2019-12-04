@@ -10,7 +10,6 @@
         $cpf_cliente = $_POST['cpf_cliente'];
         $valor = $_POST['valor'];
         $vendedor_id = $_SESSION['vendedor_id'];
-
         $alugel = new Aluguel_Control();
         $cliente_id = $alugel->retornaIdCliente($cpf_cliente);
         $id_cliente = 0;

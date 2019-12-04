@@ -60,6 +60,7 @@
 
             try {
                 $dados->execute();
+                return true;
             } catch (PDOException $e){
                 echo "Erro ao cadastrar: ". $e->getMessage();
                 $_SESSION['aluguel_nao_cadastrado'] = true;

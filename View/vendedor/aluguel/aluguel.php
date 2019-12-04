@@ -1,6 +1,12 @@
 <?php
 include '../menu.php';
+<<<<<<< HEAD
 $icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
+=======
+include '../../../Control/Aluguel_Control.php';
+$obj_aluguel = new Aluguel_Control();
+$dados = $obj_aluguel->verDados();
+>>>>>>> a2808c1823c69e1c42eca9f7778cfbb30489a9f4
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -46,6 +52,19 @@ $icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon
                             <th>Cliente</th>
                             <th>Vendedor</th>
                         </tr>
+                        <?php
+                            foreach ($dados as $d) {
+                                echo "<tr>";
+                                echo "<td>".$d['aluguel_id']."</td>";
+                                echo "<td>".$d['data_inicial']."</td>";
+                                echo "<td>".$d['data_final']."</td>";
+                                echo "<td>".$d['imovel_id']."</td>";
+                                echo "<td>".$d['cliente_id']."</td>";
+                                echo "<td>".$d['vendedor_id']."</td>";
+                                echo "</tr>";
+
+                            }
+                        ?>
                     </table>
                 </div>
             </div>

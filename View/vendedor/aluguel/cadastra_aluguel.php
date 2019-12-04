@@ -1,7 +1,13 @@
 <?php 
     include '../menu.php';
+<<<<<<< HEAD
     session_start();
     $icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
+=======
+    include('../../../Control/Imovel_Control.php');
+    $obj_imovel = new Imovel_Control();
+    $dados = $obj_imovel->verDados();
+>>>>>>> a2808c1823c69e1c42eca9f7778cfbb30489a9f4
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -78,7 +84,16 @@
                         </div>
                         <div class="form-group">
                             <label for="id_imovel">Imovel: *</label>
-                            <input type="number" class="form-control" id="id_imovel" name="imovel">
+                            <!--input type="number" class="form-control" id="id_imovel" name="imovel"-->
+                            <select name="imovel" id="id_imovel" class="form-control">
+                                <?php 
+                                    foreach ($dados as $d) {
+                                        echo "<option value='".$d['imovel_id']."'>";
+                                        echo $d['endereco']." Nº: ".$d['numero']."CEP: ".$d['cep'];
+                                        echo "</option>";
+                                    }
+                                ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="id_cliente">CPF Cliente: *</label>
