@@ -1,7 +1,8 @@
 <?php
     include '../menu.php';
 
-    $icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
+    $icons = array('../../../img/menu_icon/icon-client-20.png', '../../../img/menu_icon/icon-rent-20.png', '../../../img/menu_icon/icon-home-20.png', '../../../img/menu_icon/icon-user-20.png', '../../../img/menu_icon/icon-exit-20.png');
+    #$icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
 
     include '../../../Control/Aluguel_Control.php';
     $obj_aluguel = new Aluguel_Control();
@@ -69,7 +70,7 @@
         </div>
     </div>
 
-    <footer style="text-align: center;">
+    <footer style="text-align: center; color: white;" class="bg-dark border-bottom">
         <script src="../../../lib/js/jquery.js"></script>
         <script src="../../../lib/js/bootstrap/bootstrap.min.js"></script>
         <h2>Direitos</h2>
