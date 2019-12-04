@@ -36,7 +36,6 @@ create table imovel(
     complemento varchar(200) not null,
     valor_imovel int not null,
     status boolean not null,
-    vendedor_id int not null,
     primary key(imovel_id)
 );
 
