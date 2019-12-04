@@ -1,3 +1,5 @@
+use Imoveis;
+
 insert into vendedor (nome, contato, email, user, senha)
 values ('Kauan', '8699988775566', 'admin@gmail.com', 'admin', 'admin');
 

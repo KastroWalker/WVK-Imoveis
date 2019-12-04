@@ -1,5 +1,6 @@
 <?php 
     include '../menu.php';
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,7 +33,7 @@
     <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
         <?php 
-            slideBar("../home_vendedor.php", "../clientes/clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "usuario.php", "../../../Control/logout.php");
+            slideBar("../../../img/icon.webp", "../home_vendedor.php", "../clientes/clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "usuario.php", "../../../Control/logout.php");
         ?>
         <div id="page-content-wrapper">
             <header>
@@ -46,26 +47,45 @@
             <div class="container-fluid">
                 <div id="div_cadastro_clientes">
                     <h2 style="text-align: center;">Cadastro Aluguel</h2>
-                    <form method="POST" action="../../../Control/Aluguel_Control.php?acao=cadastrar">
+                    <?php 
+                        if(isset($_SESSION['aluguel_cadastrado'])){
+                            echo "
+                                <div class='alert alert-success text-center'>
+                                    Aluguel Cadastrado com Sucesso!<br/>
+                                    Clique <a href='aluguel.php'><strong>aqui</strong></a> para ver os Alugueis!
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['aluguel_cadastrado']);
+                        if(isset($_SESSION['aluguel_nao_cadastrado'])){
+                            echo "
+                                <div class='alert alert-danger text-center'>
+                                    Erro ao cadastrar o Aluguel!
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['aluguel_nao_cadastrado']);
+                    ?>
+                    <form method="POST" action="cadastrar_aluguel.php?acao=cadastrar">
                         <div class="form-group">
                             <label for="data_inicial">Data Inicial: *</label>
-                            <input type="date" class="form-control" id="data_inicial">
+                            <input type="date" class="form-control" id="data_inicial" name="data_inicial">
                         </div>
                         <div class="form-group">
                             <label for="data_final">Data Final: *</label>
-                            <input type="date" class="form-control" id="data_final">
+                            <input type="date" class="form-control" id="data_final" name="data_final">
                         </div>
                         <div class="form-group">
                             <label for="id_imovel">Imovel: *</label>
-                            <input type="number" class="form-control" id="id_imovel">
+                            <input type="number" class="form-control" id="id_imovel" name="imovel">
                         </div>
                         <div class="form-group">
                             <label for="id_cliente">CPF Cliente: *</label>
-                            <input type="text" class="form-control auto" id="id_cliente">
+                            <input type="text" class="form-control auto" id="id_cliente" name="cpf_cliente">
                         </div>
                         <div class="form-group">
                             <label for="valor">Valor: </label>
-                            <input type="number" class="form-control" id="valor">
+                            <input type="number" class="form-control" id="valor" name="valor">
                         </div>
                         <div class="div_btns">
                             <button class="btn btn-success">Cadastrar</button>
