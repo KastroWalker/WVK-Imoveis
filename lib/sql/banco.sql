@@ -37,8 +37,7 @@ create table imovel(
     valor_imovel int not null,
     status boolean not null,
     vendedor_id int not null,
-    primary key(imovel_id),
-    foreign key(vendedor_id) references vendedor(vendedor_id)
+    primary key(imovel_id)
 );
 
 create table aluguel(
