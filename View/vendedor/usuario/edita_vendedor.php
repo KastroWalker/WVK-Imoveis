@@ -23,7 +23,7 @@ $icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon
     <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
         <?php
-        slideBar("../../../img/icon.webp", $icons, "../home_vendedor.php", "../clientes/clientes.php", "../aluguel/aluguel.php", "imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
+        slideBar("../../../img/icon.webp", $icons, "../home_vendedor.php", "../clientes/clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "usuario.php", "../../../Control/logout.php");
         ?>
         <div id="page-content-wrapper">
             <header>
