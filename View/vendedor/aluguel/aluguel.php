@@ -25,15 +25,14 @@
 </head>
 
 <body>
-    <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
         <?php
         slideBar("../../../img/icon.webp", $icons,"../home_vendedor.php", "../clientes/clientes.php", "aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
         ?>
         <div id="page-content-wrapper">
             <header>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                    <button class="btn btn-primary" id="menu-toggle">Menu</button>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+                    <button class="btn btn-secondary" id="menu-toggle">Menu</button>
                 </nav>
                 <?php
                 menu("Aluguel", "aluguel.php", "Cadastrar", "cadastra_aluguel.php");
@@ -42,7 +41,7 @@
             <div class="container-fluid">
                 <div id="div_aluguel">
                     <h2 style="text-align: center;">Aluguel</h2>
-                    <table class="table table-condensed table-striped table-bordered table-hover">
+                    <table class="table table-hover">
                         <tr>
                             <th>Indice</th>
                             <th>Data Inicial</th>

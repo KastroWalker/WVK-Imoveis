@@ -31,15 +31,14 @@
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
         <?php 
             slideBar("../../../img/icon.webp", $icons, "../home_vendedor.php", "../clientes/clientes.php", "../aluguel/aluguel.php", "imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
         ?>
         <div id="page-content-wrapper">
             <header>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                    <button class="btn btn-primary" id="menu-toggle">Menu</button>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+                    <button class="btn btn-secondary" id="menu-toggle">Menu</button>
                 </nav>
                 <?php
                     menu("Imoveis", "imoveis.php", "Cadastrar", "cadastra_imovel.php");

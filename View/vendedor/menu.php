@@ -22,27 +22,27 @@
 
     function slideBar($img, $icons, $home, $cliente, $aluguel, $imoveis, $usuario, $sair){
         echo ("
-            <div class='bg-light border-right' id='sidebar-wrapper'>
-            <div class='sidebar-heading'><img src='$img' style='margin-right: 5px; margin-bottom: 5px; width: 20px; height: 20px;'></img>Menu</div>
+            <div class='bg-dark' id='sidebar-wrapper'>
+            <div class='sidebar-heading' style='color: white;'><img src='$img' style='margin-right: 5px; margin-bottom: 5px; width: 20px; height: 20px;'></img>WVK Imóveis</div>
                 <div class='list-group list-group-flush'>
-                    <a href='$home' class='list-group-item list-group-item-action bg-light'>Home</a>
-                    <a href='$cliente' class='list-group-item list-group-item-action bg-light'>
+                    <a href='$home' class='list-group-item list-group-item-action bg-dark' style='color: white;'>Home</a>
+                    <a href='$cliente' class='list-group-item list-group-item-action bg-dark' style='color: white;'>
                     <img src='$icons[0]' style='margin-right: 5px; margin-bottom: 5px;'></img>
                     Clientes
                     </a>
-                    <a href='$aluguel' class='list-group-item list-group-item-action bg-light'>
+                    <a href='$aluguel' class='list-group-item list-group-item-action bg-dark' style='color: white;'>
                     <img src='$icons[1]' style='margin-right: 5px; margin-bottom: 5px;'></img>
                     Aluguel
                     </a>
-                    <a href='$imoveis' class='list-group-item list-group-item-action bg-light'>
+                    <a href='$imoveis' class='list-group-item list-group-item-action bg-dark' style='color: white;'>
                     <img src='$icons[2]' style='margin-right: 5px; margin-bottom: 5px;'></img>
                     Imoveis
                     </a>
-                    <a href='$usuario' class='list-group-item list-group-item-action bg-light'>
+                    <a href='$usuario' class='list-group-item list-group-item-action bg-dark' style='color: white;'>
                     <img src='$icons[3]' style='margin-right: 5px; margin-bottom: 5px;'></img>
                     Usuário
                     </a>
-                    <a href='$sair' class='list-group-item list-group-item-action bg-light'>
+                    <a href='$sair' class='list-group-item list-group-item-action bg-dark' style='color: white;'>
                     <img src='$icons[4]' style='margin-right: 5px; margin-bottom: 5px;'></img>
                     Sair
                     </a>

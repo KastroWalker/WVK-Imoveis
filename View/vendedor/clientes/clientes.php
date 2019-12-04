@@ -9,7 +9,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,15 +25,14 @@
 </head>
 
 <body>
-    <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
         <?php
         slideBar("../../../img/icon.webp", $icons, "../home_vendedor.php", "clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
         ?>
         <div id="page-content-wrapper">
             <header>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                    <button class="btn btn-primary" id="menu-toggle">Menu</button>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+                    <button class="btn btn-secondary" id="menu-toggle">Menu</button>
                 </nav>
                 <?php
                 menu("Clientes", "clientes.php", "Cadastrar", "cadastra_cliente.php");
@@ -43,14 +41,14 @@
             <div class="container-fluid">
                 <div id="div_clientes">
                     <h2 style="text-align: center;">Clientes</h2>
-                    <table class="table table-condensed table-striped table-bordered table-hover">
+                    <table class="table table-hover">
                         <tr>
                             <th>Indice</th>
                             <th>Nome</th>
                             <th>Contato</th>
                             <th>CPF</th>
                             <th>Email</th>
-                            <th>Ações</th>
+                            <th colspan="2">Ações</th>
                         </tr>
                         <?php
                         $x = 1;
@@ -62,6 +60,8 @@
                             echo "<td>".$d['contato']."</td>";
                             echo "<td>".$d['cpf']."</td>";
                             echo "<td>".$d['email']."</td>";
+                            echo "<td><button class='btn btn-info'><img src='../../../img/icon_crud/icon-edit.png'></img></button></td>";
+                            echo "<td><button class='btn btn-danger'><img src='../../../img/icon_crud/icon-delete.png'></img></button></td>";
                             echo "</tr>";
                             $x++;
                         }
