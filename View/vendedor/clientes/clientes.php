@@ -1,6 +1,7 @@
 <?php
     include '../menu.php';
     include '../../../Control/Cliente_Control.php';
+    $icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
 
     $obj_cliente = new Cliente_Control();
 
@@ -28,7 +29,7 @@
     <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
         <?php
-        slideBar("../../../img/icon.webp","../home_vendedor.php", "clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
+        slideBar("../../../img/icon.webp", $icons, "../home_vendedor.php", "clientes.php", "../aluguel/aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
         ?>
         <div id="page-content-wrapper">
             <header>

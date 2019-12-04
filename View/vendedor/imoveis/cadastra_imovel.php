@@ -1,6 +1,7 @@
 <?php 
     include '../menu.php';
     session_start();
+    $icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
     $id_vendedor = $_SESSION['vendedor_id'];
 ?>
 <!DOCTYPE html>
@@ -33,7 +34,7 @@
     <h1 style="text-align: center;">WVK Imóveis</h1>
     <div class="d-flex" id="wrapper">
         <?php 
-            slideBar("../../../img/icon.webp", "../home_vendedor.php", "../clientes/clientes.php", "../aluguel/aluguel.php", "imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
+            slideBar("../../../img/icon.webp", $icons, "../home_vendedor.php", "../clientes/clientes.php", "../aluguel/aluguel.php", "imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
         ?>
         <div id="page-content-wrapper">
             <header>
