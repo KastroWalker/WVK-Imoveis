@@ -1,6 +1,6 @@
 <?php
-    include ("../Model/Vendedor_Model.php");
-    include ("../Banco/Conexao.php");
+    include "../Model/Vendedor_Model.php";
+    include "../Banco/Conexao.php";
 	session_start();
 
     class Vendedor_Control{
