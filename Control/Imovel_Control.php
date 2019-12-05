@@ -20,17 +20,17 @@
             return $dados;
         }
 
-        function cadastrar($endereco, $numero, $bairro, $cep, $complemento, $valor_imovel, $status, $vendedor_id){
+        function cadastrar($endereco, $numero, $bairro, $cep, $complemento, $valor_imovel, $status, $img){
             $this->dados->setEndereco($endereco);
             $this->dados->setNumero($numero);
             $this->dados->setBairro($bairro);
-            $this->dados->setVendedorId($cep);
+            $this->dados->setCep($cep);
             $this->dados->setComplemento($complemento);
             $this->dados->setValorImovel($valor_imovel);
             $this->dados->setStatus($status);
-            $this->dados->setVendedorId($vendedor_id);
+            $this->dados->setImgImovel($img);
             
-            $sql = "insert into imovel (endereco, numero, bairro, cep, complemento, valor_imovel, status, vendedor_id) values (:endereco, :numero, :bairro, :cep, :complemento, :valor_imovel, :status, :vendedor_id);";
+            $sql = "insert into imovel (endereco, numero, bairro, cep, complemento, valor_imovel, status, img_imovel) values (:endereco, :numero, :bairro, :cep, :complemento, :valor_imovel, :status, :img);";
             $d = $this->conexao->Conectar();
             $dados = $d->prepare($sql);
             $dados->bindValue(":endereco", $this->dados->getEndereco());
@@ -40,7 +40,7 @@
             $dados->bindValue(":complemento", $this->dados->getComplemento());
             $dados->bindValue(":valor_imovel", $this->dados->getValorImovel());
             $dados->bindValue(":status", $this->dados->getStatus());
-            $dados->bindValue(":vendedor_id", $this->dados->getVendedorId());
+            $dados->bindValue(":img", $this->dados->getImgImovel());
 
             try {
                 $dados->execute();
@@ -102,26 +102,45 @@
                 echo "Erro ao apagar " . $e->getMessage();
             }
         }
-    }
 
-    @$acao = $_REQUEST['acao'];
+        function escreve_imovel($img, $endereco, $numero, $cep, $status, $indice, $x){
+            if ($status == '1') {
+                $status_imovel = "Ocupado";
+            }else{
+                $status_imovel = "Desocupado";
+            }
 
-    if($acao == "cadastrar"){
-        echo "chamou";
-        $endereco = $_POST['campo_endereco'];
-        $numero = $_POST['campo_numero'];
-        $bairro = $_POST['campo_bairro'];
-        $cep = $_POST['campo_cep'];
-        $complemento = $_POST['campo_complemento'];
-        $valor_imovel = $_POST['campo_valor'];
-        $status = 0;
-        $vendedor_id = $_POST['campo_id'];
-    
-        $imovel = new Imovel_Control();
-
-        if($imovel->cadastrar($endereco, $numero, $bairro, $cep, $complemento, $valor_imovel, $status, $vendedor_id)){
-            $_SESSION['imovel_cadastrado'] = true;
+            $string = "
+                    <div class='card border-info mb-3' style='max-width: 35rem;'>
+                        <div class='card-header bg-info'>Imóvel $indice</div>
+                        <div class='card-body'>
+                            <img src='../../../img/imoveis/$img' style='width: 260px; height: 260px;'>
+                            <div class='card-text text_card' style='margin-top: 15px;'>
+                                <strong>Status: </strong>
+                                <p class='$status_imovel'>$status_imovel</p>
+                            </div>
+                            <div class='card-text text_card'>
+                                <strong>Endereço: </strong>
+                                <p>$endereco</p>
+                            </div>
+                            <div class='card-text text_card'>
+                                <strong>Número: </strong>
+                                <p>$numero</p>
+                            </div>
+                            <div class='card-text text_card'>
+                                <strong>Cep: </strong>
+                                <p>$cep</p>
+                            </div>
+                        </div>
+                    </div>
+            ";
+            if($indice == 1){
+                echo "<div class='card-deck d-flex justify-content-center'>";   
+            }else if($indice % 4 == 0){
+                echo "</div>";
+                echo "<div class='card-deck d-flex justify-content-center'>";   
+            }
+            echo $string;
         }
-        header("Location: ../View/vendedor/imoveis/cadastra_imovel.php");
     }
 ?>

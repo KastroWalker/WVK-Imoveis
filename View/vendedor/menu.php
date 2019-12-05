@@ -51,6 +51,17 @@
         ");
     }
 
+    function escreve_rodape(){
+        echo "
+            <footer style='text-align: center; color: white; padding-top: 15px;' class='bg-dark border-bottom'>
+                <script src=../../../lib/js/jquery.js'></script>
+                <script src='../../../lib/js/bootstrap/bootstrap.min.js'></script>
+                <h2>Direitos</h2>
+                <p>2019 &copy; Copyright - Todos os direitos reservados | Tico && Teco.</p>
+            </footer>
+        ";
+    }
+
     function mostra_turno(){
         date_default_timezone_set('America/Fortaleza');
         $date = date('H');

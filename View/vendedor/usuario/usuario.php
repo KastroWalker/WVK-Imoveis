@@ -28,7 +28,7 @@
         <div id="page-content-wrapper">
             <header>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-                    <button class="btn btn-secondary" id="menu-toggle">Menu</button>
+                    <button class="btn btn-primary" id="menu-toggle">Menu</button>
                 </nav>
                 <?php
                 menu("Usuário", "usuario.php", "Editar Informações", "edita_vendedor.php");
@@ -41,12 +41,9 @@
         </div>
     </div>
 
-    <footer style="text-align: center; color: white;" class="bg-dark border-bottom">
-        <script src="../../../lib/js/jquery.js"></script>
-        <script src="../../../lib/js/bootstrap/bootstrap.min.js"></script>
-        <h2>Direitos</h2>
-        <p>2019 &copy; Copyright - Todos os direitos reservados | Tico && Teco.</p>
-    </footer>
+    <?php 
+        escreve_rodape();
+    ?>
     <script>
         $("#menu-toggle").click(function(e) {
             e.preventDefault();

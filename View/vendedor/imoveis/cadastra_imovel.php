@@ -39,7 +39,7 @@
         <div id="page-content-wrapper">
             <header>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-                    <button class="btn btn-secondary" id="menu-toggle">Menu</button>
+                    <button class="btn btn-primary" id="menu-toggle">Menu</button>
                 </nav>
                 <?php
                     menu("Imoveis", "imoveis.php", "Cadastrar", "cadastra_imovel.php");
@@ -67,7 +67,7 @@
                         }
                         unset($_SESSION['imovel_nao_cadastrado']);
                     ?>
-                    <form method="POST" action="cadastrar_imovel.php?acao=cadastrar">
+                    <form method="POST" action="cadastrar_imovel.php?acao=cadastrar" enctype="multipart/form-data">
                         <input type="hidden" value="<?php echo $id_vendedor; ?>" name="campo_id" id="id">
                         <div class="form-group">
                             <label for="endereco">Endereço: *</label>
@@ -93,6 +93,10 @@
                             <label for="valor">Valor: *</label>
                             <input type="number" name="campo_valor" id="valor" class="form-control">
                         </div>
+                        <div class="form-group">
+                            <label for="img">Imagem: </label>
+                            <input type="file" name="arquivo" id="img" class="form-control">
+                        </div>
                         <div class="div_btns">
                             <button class="btn btn-success">Cadastrar</button>
                             <button class="btn btn-primary">Limpar</button>
@@ -103,12 +107,9 @@
         </div>
     </div>
 
-    <footer style="text-align: center; color: white;" class="bg-dark border-bottom">
-        <script src="../../../lib/js/jquery.js"></script>
-        <script src="../../../lib/js/bootstrap/bootstrap.min.js"></script>
-        <h2>Direitos</h2>
-        <p>2019 &copy; Copyright - Todos os direitos reservados | Tico && Teco.</p>
-    </footer>
+    <?php 
+        escreve_rodape();
+    ?>
     <script>
         $("#menu-toggle").click(function(e) {
             e.preventDefault();

@@ -11,6 +11,7 @@ create table vendedor(
     email varchar(100) not null,
     user varchar(200) not null,
     senha varchar(32) not null,
+    img_perfil varchar(200),
     primary key(vendedor_id)
 );
 
@@ -24,6 +25,7 @@ create table cliente(
     -- Informações da Conta --
     user varchar(200),
     senha varchar(32),
+    img_perfil varchar(200),
     primary key(cliente_id)
 );
 
@@ -36,6 +38,7 @@ create table imovel(
     complemento varchar(200) not null,
     valor_imovel int not null,
     status boolean not null,
+    img_imovel varchar(200),
     primary key(imovel_id)
 );
 
