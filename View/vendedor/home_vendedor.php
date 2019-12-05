@@ -26,7 +26,7 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-info">
     <div class="d-flex" id="wrapper">
         <?php 
             slideBar("../../img/icon.webp", $icons,"home_vendedor.php", "clientes/clientes.php", "aluguel/aluguel.php", "imoveis/imoveis.php", "usuario/usuario.php", "../../Control/logout.php");
@@ -34,18 +34,18 @@
 
         <div id="page-content-wrapper">
             <header>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-                    <button class="btn btn-secondary" id="menu-toggle">Menu</button>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+                    <button class="btn btn-primary" id="menu-toggle">Menu</button>
                 </nav>
             </header>
             <div class="container-fluid">
-                <h2 class="d-flex justify-content-center" style="margin-top: 15px;">
+                <h2 class="d-flex justify-content-center text-white" style="margin-top: 15px;">
                     <?php 
                         mostra_turno();
-                        echo " Seja Bem vindo(a) $nome_vendedor !";
+                        echo "Seja Bem vindo(a) $nome_vendedor !";
                     ?>
                 </h2>
-                <h3 class="d-flex justify-content-center">O que deseja fazer?</h3>
+                <h3 class="d-flex justify-content-center text-white">O que deseja fazer?</h3>
                 <div style="margin-top: 30px;">
                     <div class="card-deck d-flex justify-content-center">
                         <div class="card border-warning mb-4" style="max-width: 30rem;">
@@ -53,7 +53,7 @@
                             <div class="card-body">
                                 <img src="../../img/home_vendedor/icon-home.png">
                                 <p class="card-text text_card">Veja aqui as informações dos Imóveis na plataforma.</p>
-                                <button class="btn btn-warning">Ver Imóveis!</button>
+                                <button class="btn btn-warning btn-imoveis">Ver Imóveis!</button>
                             </div>
                         </div>
                         <div class="card border-primary mb-4" style="max-width: 30rem;">
@@ -61,18 +61,18 @@
                             <div class="card-body">
                                 <img src="../../img/home_vendedor/icon-client-management.png">
                                 <p class="card-text text_card">Veja aqui as informações dos Clientes na plataforma.</p>
-                                <button class="btn btn-primary">Ver Clientes!</button>
+                                <button class="btn btn-primary btn-cliente">Ver Clientes!</button>
                             </div>
                         </div>
                     </div>
 
                     <div class="card-deck d-flex justify-content-center">
                         <div class="card border-info mb-4" style="max-width: 30rem;">
-                            <div class="card-header bg-info">Usuário</div>
+                            <div class="card-header bg-secondary">Usuário</div>
                             <div class="card-body">
                                 <img src="../../img/home_vendedor/icon-user.png">
                                 <p class="card-text text_card">Veja aqui as informações do seu Usuário.</p>
-                                <button class="btn btn-info">Ver Usuário!</button>
+                                <button class="btn btn-secondary btn-user">Ver Usuário!</button>
                             </div>
                         </div>
                         <div class="card border-success mb-4" style="max-width: 30rem;">
@@ -80,7 +80,7 @@
                             <div class="card-body">
                                 <img src="../../img/home_vendedor/icon-rent.png">
                                 <p class="card-text text_card">Veja aqui as informações dos alugueis na plataforma.</p>
-                                <button class="btn btn-success">Ver Alugueis!</button>
+                                <button class="btn btn-success btn-aluguel">Ver Alugueis!</button>
                             </div>
                         </div>
                     </div>
@@ -100,16 +100,16 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
-        $('.btn-info').click(function(){
+        $('.btn-user').click(function(){
             window.location.href = "usuario/usuario.php";
         });
-        $('.btn-warning').click(function(){
+        $('.btn-imoveis').click(function(){
             window.location.href = "imoveis/imoveis.php";
         });
-        $('.btn-primary').click(function(){
+        $('.btn-cliente').click(function(){
             window.location.href = "clientes/clientes.php";
         });
-        $('.btn-success').click(function(){
+        $('.btn-aluguel').click(function(){
             window.location.href = "aluguel/aluguel.php";
         });
     </script>
