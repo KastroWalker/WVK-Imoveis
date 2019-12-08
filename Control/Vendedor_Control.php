@@ -147,4 +147,7 @@
         $vendedor = new Vendedor_Control();
 
         $vendedor->logar($user, $senha);
+    }else if ($acao = "logout") {
+        session_destroy();
+        header("Location: ../View/login.php");
     }

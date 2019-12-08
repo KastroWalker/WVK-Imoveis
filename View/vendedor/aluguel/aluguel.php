@@ -28,7 +28,7 @@
 <body>
     <div class="d-flex" id="wrapper">
         <?php
-        slideBar("../../../img/icon.webp", $icons,"../home_vendedor.php", "../clientes/clientes.php", "aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/logout.php");
+        slideBar("../../../img/icon.webp", $icons,"../home_vendedor.php", "../clientes/clientes.php", "aluguel.php", "../imoveis/imoveis.php", "../usuario/usuario.php", "../../../Control/Vendedor_Control.php?acao=logout");
         ?>
         <div id="page-content-wrapper">
             <header>
