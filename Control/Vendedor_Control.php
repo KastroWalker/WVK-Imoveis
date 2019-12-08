@@ -21,11 +21,11 @@
         }
 
         function cadastrar($nome, $contato, $email, $user, $senha){
-            $this->dados->setNome($nome);
-            $this->dados->setContato($contato);
-            $this->dados->setEmail($email);
-            $this->dados->setUser($user);
-            $this->dados->setSenha($senha);
+            $this->dados->setNome($this->dados->clear_string($nome));
+            $this->dados->setContato($this->dados->clear_string($contato));
+            $this->dados->setEmail($this->dados->clear_string($email));
+            $this->dados->setUser($this->dados->clear_string($user));
+            $this->dados->setSenha($this->dados->clear_string($senha));
             
             $sql = "insert into vendedor (nome, contato, email, user, senha) values (:nome, :contato, :email, :user, :senha);";
             $d = $this->conexao->Conectar();
@@ -47,11 +47,11 @@
         }
 
         function atualizar($nome, $contato, $email, $user, $vendedor_id){
-            $this->dados->setNome($nome);
-            $this->dados->setContato($contato);
-            $this->dados->setEmail($email);
-            $this->dados->setUser($user);
-            $this->dados->setVendedorId($vendedor_id);
+            $this->dados->setNome($this->dados->clear_string($nome));
+            $this->dados->setContato($this->dados->clear_string($contato));
+            $this->dados->setEmail($this->dados->clear_string($email));
+            $this->dados->setUser($this->dados->clear_string($user));
+            $this->dados->setVendedorId($this->dados->clear_string($vendedor_id));
 
             $sql = "update vendedor set nome = :nome, contato = :contato, email = :email, user = :user where vendedor_id = :vendedor_id);";
             $d = $this->conexao->Conectar();

@@ -93,5 +93,11 @@
         public function setImgImovel($img_imovel){
             return $this->img_imovel = $img_imovel;
         }
+
+        public function clear_string($string){
+            $var = trim($var);
+            $var = htmlspecialchars($string);
+            return $var;
+        }
     }
 ?>

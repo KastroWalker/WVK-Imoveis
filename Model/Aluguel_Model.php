@@ -73,5 +73,11 @@
 		public function setImovelId($imovel_id){
 		    return $this->imovel_id = $imovel_id;
 		}
+
+		public function clear_string($string){
+        	$var = trim($var);
+        	$var = htmlspecialchars($string);
+        	return $var;
+    	}
 	}
 ?>

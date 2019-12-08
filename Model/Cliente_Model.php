@@ -74,5 +74,10 @@ class Cliente_Model{
 	    return $this->senha = md5($senha);
 	}
 	
+	public function clear_string($string){
+    	$var = trim($var);
+    	$var = htmlspecialchars($string);
+    	return $var;
+	}
 }
 ?>

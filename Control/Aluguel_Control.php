@@ -41,12 +41,12 @@
 
         function cadastrar($data_inicial, $data_final, $valor_aluguel, $vendedor_id, $cliente_id, $imovel_id){
 
-            $this->dados->setDataInicial($data_inicial);
-            $this->dados->setDataFinal($data_final);
-            $this->dados->setValorAluguel($valor_aluguel);
-            $this->dados->setVendedorId($vendedor_id);
-            $this->dados->setClienteId($cliente_id);
-            $this->dados->setImovelId($imovel_id);
+            $this->dados->setDataInicial($this->dados->clear_string($data_inicial));
+            $this->dados->setDataFinal($this->dados->clear_string($data_final));
+            $this->dados->setValorAluguel($this->dados->clear_string($valor_aluguel));
+            $this->dados->setVendedorId($this->dados->clear_string($vendedor_id));
+            $this->dados->setClienteId($this->dados->clear_string($cliente_id));
+            $this->dados->setImovelId($this->dados->clear_string($imovel_id));
             
             $sql = "insert into aluguel (data_inicial, data_final, valor_aluguel, vendedor_id, cliente_id, imovel_id) values (:data_inicial, :data_final, :valor_aluguel, :vendedor_id, :cliente_id, :imovel_id);";
             $d = $this->conexao->Conectar();
@@ -69,13 +69,13 @@
         }
 
         function atualizar($data_inicial, $data_final, $valor_aluguel, $vendedor_id, $cliente_id, $imovel_id, $aluguel_id){
-            $this->dados->setDataInicial($data_inicial);
-            $this->dados->setDataFinal($data_final);
-            $this->dados->setValorAluguel($valor_aluguel);
-            $this->dados->setVendedorId($vendedor_id);
-            $this->dados->setClienteId($cliente_id);
-            $this->dados->setImovelId($imovel_id);
-            $this->dados->setAluguelId($aluguel_id);
+            $this->dados->setDataInicial($this->dados->clear_string($data_inicial));
+            $this->dados->setDataFinal($this->dados->clear_string($data_final));
+            $this->dados->setValorAluguel($this->dados->clear_string($valor_aluguel));
+            $this->dados->setVendedorId($this->dados->clear_string($vendedor_id));
+            $this->dados->setClienteId($this->dados->clear_string($cliente_id));
+            $this->dados->setImovelId($this->dados->clear_string($imovel_id));
+            $this->dados->setAluguelId($this->dados->clear_string($aluguel_id));
 
             $sql = "update aluguel set data_inicial = :data_inicial, data_final = :data_final, valor_aluguel = :valor_aluguel, vendedor_id = :vendedor_id, cliente_id = :cliente_id, imovel_id = :imovel_id where aluguel_id = :aluguel_id);";
             $d = $this->conexao->Conectar();

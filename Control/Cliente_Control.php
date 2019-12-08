@@ -22,12 +22,12 @@
         }
 
         function cadastrar($nome, $contato, $cpf, $email, $user, $senha){
-            $this->dados->setNome($nome);
-            $this->dados->setContato($contato);
-            $this->dados->setCpf($cpf);
-            $this->dados->setEmail($email);
-            $this->dados->setUser($user);
-            $this->dados->setSenha($senha);
+            $this->dados->setNome($this->dados->clear_string($nome));
+            $this->dados->setContato($this->dados->clear_string($contato));
+            $this->dados->setCpf($this->dados->clear_string($cpf));
+            $this->dados->setEmail($this->dados->clear_string($email));
+            $this->dados->setUser($this->dados->clear_string($user));
+            $this->dados->setSenha($this->dados->clear_string($senha));
             
             $sql = "insert into cliente (nome, contato, cpf, email, user, senha) values (:nome, :contato, :cpf, :email, :user, :senha);";
             $d = $this->conexao->Conectar();
@@ -50,11 +50,11 @@
         }
 
         function atualizar($nome, $contato, $cpf, $email, $cliente_id){
-            $this->dados->setNome($nome);
-            $this->dados->setContato($contato);
-            $this->dados->setCpf($cpf);
-            $this->dados->setEmail($email);
-            $this->dados->setClienteId($cliente_id);
+            $this->dados->setNome($this->dados->clear_string($nome));
+            $this->dados->setContato($this->dados->clear_string($contato));
+            $this->dados->setCpf($this->dados->clear_string($cpf));
+            $this->dados->setEmail($this->dados->clear_string($email));
+            $this->dados->setClienteId($this->dados->clear_string($cliente_id));
 
             $sql = "update cliente set nome = :nome, contato = :contato, cpf = :cpf, email = :email where cliente_id = :cliente_id);";
             $d = $this->conexao->Conectar();

@@ -21,14 +21,14 @@
         }
 
         function cadastrar($endereco, $numero, $bairro, $cep, $complemento, $valor_imovel, $status, $img){
-            $this->dados->setEndereco($endereco);
-            $this->dados->setNumero($numero);
-            $this->dados->setBairro($bairro);
-            $this->dados->setCep($cep);
-            $this->dados->setComplemento($complemento);
-            $this->dados->setValorImovel($valor_imovel);
-            $this->dados->setStatus($status);
-            $this->dados->setImgImovel($img);
+            $this->dados->setEndereco($this->dados->clear_string($endereco));
+            $this->dados->setNumero($this->dados->clear_string($numero));
+            $this->dados->setBairro($this->dados->clear_string($bairro));
+            $this->dados->setCep($this->dados->clear_string($cep));
+            $this->dados->setComplemento($this->dados->clear_string($complemento));
+            $this->dados->setValorImovel($this->dados->clear_string($valor_imovel));
+            $this->dados->setStatus($this->dados->clear_string($status));
+            $this->dados->setImgImovel($this->dados->clear_string($img));
             
             $sql = "insert into imovel (endereco, numero, bairro, cep, complemento, valor_imovel, status, img_imovel) values (:endereco, :numero, :bairro, :cep, :complemento, :valor_imovel, :status, :img);";
             $d = $this->conexao->Conectar();
@@ -53,15 +53,15 @@
         }
 
         function atualizar($endereco, $numero, $bairro, $cep, $complemento, $valor_imovel, $status, $vendedor_id, $imovel_id){
-            $this->dados->setEndereco($endereco);
-            $this->dados->setNumero($numero);
-            $this->dados->setBairro($bairro);
-            $this->dados->setCep($cep);
-            $this->dados->setComplemento($complemento);
-            $this->dados->setValorImovel($valor_imovel);
-            $this->dados->setStatus($status);
-            $this->dados->setVendedorId($vendedor_id);
-            $this->dados->setImovelId($imovel_id);
+            $this->dados->setEndereco($this->dados->clear_string($endereco));
+            $this->dados->setNumero($this->dados->clear_string($numero));
+            $this->dados->setBairro($this->dados->clear_string($bairro));
+            $this->dados->setCep($this->dados->clear_string($cep));
+            $this->dados->setComplemento($this->dados->clear_string($complemento));
+            $this->dados->setValorImovel($this->dados->clear_string($valor_imovel));
+            $this->dados->setStatus($this->dados->clear_string($status));
+            $this->dados->setVendedorId($this->dados->clear_string($vendedor_id));
+            $this->dados->setImovelId($this->dados->clear_string($imovel_id));
             
             $d = $this->conexao->Conectar();
             
