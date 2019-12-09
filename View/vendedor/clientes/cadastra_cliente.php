@@ -66,7 +66,7 @@
                         }
                         unset($_SESSION['cliente_nao_cadastrado']);
                     ?>
-                    <form method="POST" action="cadastrar_cliente.php?acao=cadastrar" enctype="multipart/form-data">
+                    <form method="POST" action="gerencia_cliente.php?acao=cadastrar" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="nome">Nome: *</label>
                             <input type="text" name="campo_nome" id="nome" class="form-control" required>

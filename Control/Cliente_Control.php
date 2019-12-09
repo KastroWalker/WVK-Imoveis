@@ -82,15 +82,18 @@
 
             $d = $this->conexao->Conectar();
 
-            $sql = "delete * from cliente where cliente_id = :cliente_id";
+            $sql = "delete from cliente where cliente_id = :cliente_id;";
 
             $dados = $d->prepare($sql);
             $dados->bindValue(":cliente_id", $this->dados->getClienteId());
 
             try {
                 $dados->execute();
+                return true;
             } catch (PDOException $e) {
                 echo "Erro ao apagar " . $e->getMessage();
+                return false;
+                $_SESSION['cliente_nao_excluido'] = true;
             }
         }
     }

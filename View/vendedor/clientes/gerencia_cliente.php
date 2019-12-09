@@ -48,5 +48,15 @@
         }
 
         header('Location: cadastra_cliente.php');
+    }else if($acao == "deletar"){
+        $cliente_id = $_POST['delete_id'];
+
+        $cliente = new Cliente_Control();
+
+        if($cliente->deletar($cliente_id)){
+            $_SESSION['cliente_excluido'] = true;
+        }
+
+        header('Location: clientes.php');
     }
 ?>

@@ -51,16 +51,55 @@
                 menu("Clientes", "clientes.php", "Cadastrar", "cadastra_cliente.php");
                 ?>
             </header>
+            <!-- Modal Delete -->
+            <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Apagar Cliente</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="gerencia_cliente.php?acao=deletar" method="POST">
+                            <div class="modal-body">
+                                <input type="hidden" name="delete_id" id="delete_id">
+                                <h4> Você tem certeza que deseja apagar esse Cliente? </h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"> Não </button>
+                                <button type="submit" name="deletedata" class="btn btn-danger"> Sim, deletar!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="container-fluid">
                 <div id="div_clientes">
                     <h2 style="text-align: center;">Clientes</h2>
+                    <?php 
+                        if(isset($_SESSION['cliente_excluido'])){
+                            echo "
+                                <div class='alert alert-success text-center'>
+                                    Cliente Excluido com Sucesso!<br/>
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['cliente_excluido']);
+                        if(isset($_SESSION['cliente_nao_excluido'])){
+                            echo "
+                                <div class='alert alert-danger text-center'>
+                                    Erro ao excluir o Cliente!
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['cliente_nao_excluido']);
+                    ?>
                     <table class="table table-hover">
                         <tr>
                             <th>Indice</th>
                             <th>Nome</th>
-                            <!--th>Contato</th-->
                             <th>CPF</th>
-                            <!--th>Email</th-->
                             <th colspan="2">Ações</th>
                         </tr>
                         <?php
@@ -77,7 +116,7 @@
                             echo "<td style='display: none;'>".$d['senha']."</td>";
                             echo "<td style='display: none;'>".$d['img_perfil']."</td>";
                             echo "<td><button class='btn btn-info'><img src='../../../img/icon_crud/icon-edit.png'></img></button></td>";
-                            echo "<td><button class='btn btn-danger'><img src='../../../img/icon_crud/icon-delete.png'></img></button></td>";
+                            echo "<td><button class='btn btn-danger btn-delete'><img src='../../../img/icon_crud/icon-delete.png'></img></button></td>";
                             echo "</tr>";
                             $x++;
                         }
@@ -86,47 +125,53 @@
                     <div id="info_cliente" class="info_cliente">
                         <table class='table table-bordered table-hover'>
                             <tr>
-                                <td>
-                                    <h3>Infomações Cliente</h3>
+                                <td style="border-right: none;">
+                                    <h3 >Infomações Cliente</h3>
+                                    
+                                </td>
+                                <td class="d-flex justify-content-end" style="border: none;">
+                                    <button class="btn btn_close">
+                                        <img src="../../../img/icon-fechar.png" style="width: 25px; height: 25px;">
+                                    </button>        
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <img src="" alt="perfil_cliente" id="perfil_cliente" style="width: 100px; width: 100px;">
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <dt class='col-sm-3'>Nome: </dt>
                                     <dd class='col-sm-9' id="nome_cliente"></dd>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <dt class='col-sm-3'>Contato: </dt>
                                     <dd class='col-sm-9' id="contato_cliente"></dd>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <dt class='col-sm-3'>Cpf: </dt>
                                     <dd class='col-sm-9' id="cpf_cliente"></dd>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <dt class='col-sm-3'>Email: </dt>
                                     <dd class='col-sm-9' id="email_cliente"></dd>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <dt class='col-sm-3'>Usuário: </dt>
                                     <dd class='col-sm-9' id="user_cliente"></dd>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <dt class='col-sm-3'>Senha </dt>
                                     <dd class='col-sm-9' id="senha_cliente"></dd>
                                 </td>
@@ -145,6 +190,7 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
+
         $(document).ready(function(){
             $('.cliente').on('click', function(){     
                 $("#info_cliente").fadeIn();     
@@ -164,6 +210,21 @@
                 document.getElementById("user_cliente").innerHTML = data[6];
                 document.getElementById("senha_cliente").innerHTML = data[7];
                 document.getElementById("perfil_cliente").src = "../../../img/perfil_clientes/" + data[8];
+            });
+            $('.btn_close').on('click', function(){
+                $("#info_cliente").fadeOut();
+            });
+            $('.btn-delete').on('click', function(){
+                $('#deletemodal').modal('show');  
+                
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function(){
+                    return $(this).text();
+                }).get();
+
+                console.log(data);  
+                document.getElementById("delete_id").value = data[3];
             });
         });
     </script>
