@@ -1,0 +1,20 @@
+.info_cliente, .edit_cliente{
+    width: 80%;
+    margin: auto;
+    display: none;
+}
+
+#id_cliente{
+    width: 100px;
+    height: 100px;
+}
+
+.validate{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: solid 1px #00C4FF;
+    height: 35px;
+    background: none;
+    margin-left: 9px;
+}

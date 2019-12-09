@@ -22,19 +22,8 @@
     <link rel="icon" href="../../../img/icon.webp" type="image/x-icon" />
 
     <link href="../../../lib/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../lib/css/style_cliente.css" rel="stylesheet">
     <link href="../../../lib/css/simple-sidebar.css" rel="stylesheet">
-    <style>
-        .info_cliente{
-            width: 80%;
-            margin: auto;
-            display: none;
-        }
-
-        #id_cliente{
-            width: 100px;
-            height: 100px;
-        }
-    </style>
 </head>
 
 <body>
@@ -95,6 +84,22 @@
                             ";
                         }
                         unset($_SESSION['cliente_nao_excluido']);
+                        if(isset($_SESSION['cliente_editado'])){
+                            echo "
+                                <div class='alert alert-success text-center'>
+                                    Cliente Editado com Sucesso!<br/>
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['cliente_editado']);
+                        if(isset($_SESSION['cliente_nao_editado'])){
+                            echo "
+                                <div class='alert alert-danger text-center'>
+                                    Erro ao editar o Cliente!
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['cliente_nao_editado']);
                     ?>
                     <table class="table table-hover">
                         <tr>
@@ -116,7 +121,7 @@
                             echo "<td style='display: none;'>".$d['user']."</td>";
                             echo "<td style='display: none;'>".$d['senha']."</td>";
                             echo "<td style='display: none;'>".$d['img_perfil']."</td>";
-                            echo "<td><button class='btn btn-info'><img src='../../../img/icon_crud/icon-edit.png'></img></button></td>";
+                            echo "<td><button class='btn btn-info btn-edit'><img src='../../../img/icon_crud/icon-edit.png'></img></button></td>";
                             echo "<td><button class='btn btn-danger btn-delete'><img src='../../../img/icon_crud/icon-delete.png'></img></button></td>";
                             echo "</tr>";
                             $x++;
@@ -178,6 +183,75 @@
                             </tr>
                         </table>
                     </div>
+                    
+                    <!-- Div de Edit -->
+                    <div id="info_cliente" class="edit_cliente">
+                        <table class='table table-bordered table-hover'>
+                            <tr>
+                                <td style="border-right: none;">
+                                    <h3>Edita Cliente</h3>
+                                </td>
+                                <td class="d-flex justify-content-end" style="border: none;">
+                                    <button class="btn btn_close_edit">
+                                        <img src="../../../img/icon-fechar.png" style="width: 25px; height: 25px;">
+                                    </button>        
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <img src="" alt="perfil_cliente" id="img_perfil_cliente" style="width: 100px; width: 100px;">
+                                </td>
+                            </tr>
+                            <form action="gerencia_cliente.php?acao=editar" method="POST" enctype="multipart/form-data">
+                                <tr>
+                                    <input type="hidden" id="img_perfil_atual" name="img_perfil">
+                                    <input type="hidden" id="cliente_id" name="cliente_id">
+                                    <input type='hidden' name="campo_senha" id="campo_senha">
+                                    <td colspan="2">
+                                        <label class='col-sm-3'>Nome: </label>
+                                        <input class='col-sm-9 validate' type='text' name="campo_nome" id="campo_nome">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label class='col-sm-3'>Contato: </label>
+                                        <input class='col-sm-9 validate' type='text' name="campo_contato" id="campo_contato">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label class='col-sm-3'>Cpf: </label>
+                                        <input class='col-sm-9 validate' type='text' name="campo_cpf" id="campo_cpf">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label class='col-sm-3'>Email: </label>
+                                        <input class='col-sm-9 validate' type='email' name="campo_email" id="campo_email">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label class='col-sm-3'>Usuário: </label>
+                                        <input class='col-sm-9 validate' type='text' name="campo_usuario" id="campo_user">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label class='col-sm-3'>Foto Perfil </label>
+                                        <input class='col-sm-9 validate' type='file' name="arquivo">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <button type="submit" class="btn btn-success">Editar</button>
+                                        <button type="reset" class="btn btn-primary">Limpar</button>
+                                        <button type="button" class="btn btn-danger">Cancelar</button>
+                                    </td>
+                                </tr>
+                            </form>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,45 +264,8 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
-
-        $(document).ready(function(){
-            $('.cliente').on('click', function(){     
-                $("#info_cliente").fadeIn();     
-                
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function(){
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-                
-                document.getElementById("nome_cliente").innerHTML = data[1];
-                document.getElementById("contato_cliente").innerHTML = data[4];
-                document.getElementById("cpf_cliente").innerHTML = data[2];
-                document.getElementById("email_cliente").innerHTML = data[5];
-                document.getElementById("user_cliente").innerHTML = data[6];
-                document.getElementById("senha_cliente").innerHTML = data[7];
-                document.getElementById("perfil_cliente").src = "../../../img/perfil_clientes/" + data[8];
-            });
-            $('.btn_close').on('click', function(){
-                $("#info_cliente").fadeOut();
-            });
-            $('.btn-delete').on('click', function(){
-                $('#deletemodal').modal('show');  
-                
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function(){
-                    return $(this).text();
-                }).get();
-
-                console.log(data);  
-                document.getElementById("delete_id").value = data[3];
-                document.getElementById("img_perfil").value = data[8];
-            });
-        });
     </script>
+    <script src="../../../lib/js/clientes.js"></script>
 </body>
 
 </html>
