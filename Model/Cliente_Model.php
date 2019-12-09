@@ -7,6 +7,7 @@ class Cliente_Model{
 	private $email;
 	private $user;
 	private $senha;
+	private $foto_perfil;
 
 	function __construct(){
 		$this->cliente_id = 0;
@@ -16,6 +17,7 @@ class Cliente_Model{
 		$this->email = "null";
 		$this->user = "null";
 		$this->senha = "null";
+		$this->foto_perfil = "icon-user-padrao.png";
 	}
 
 	public function getClienteId(){
@@ -74,8 +76,16 @@ class Cliente_Model{
 	    return $this->senha = md5($senha);
 	}
 	
+	public function getFotoPerfil(){
+	    return $this->foto_perfil;
+	}
+	
+	public function setFotoPerfil($foto_perfil){
+	    return $this->foto_perfil = $foto_perfil;
+	}
+
 	public function clear_string($string){
-    	$var = trim($var);
+    	$var = trim($string);
     	$var = htmlspecialchars($string);
     	return $var;
 	}

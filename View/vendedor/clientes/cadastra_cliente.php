@@ -66,7 +66,7 @@
                         }
                         unset($_SESSION['cliente_nao_cadastrado']);
                     ?>
-                    <form method="POST" action="cadastrar_cliente.php?acao=cadastrar">
+                    <form method="POST" action="cadastrar_cliente.php?acao=cadastrar" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="nome">Nome: *</label>
                             <input type="text" name="campo_nome" id="nome" class="form-control" required>
@@ -90,6 +90,10 @@
                         <div class="form-group">
                             <label for="senha">Senha: </label>
                             <input type="password" name="campo_senha" id="senha" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="img">Foto Perfil: </label>
+                            <input type="file" name="arquivo" id="img" class="form-control">
                         </div>
                         <div class="div_btns">
                             <button type="submit" class="btn btn-success">Cadastrar</button>

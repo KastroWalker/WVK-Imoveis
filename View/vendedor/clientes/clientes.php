@@ -92,7 +92,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="" alt="perfil_cliente" id="perfil_cliente">
+                                    <img src="" alt="perfil_cliente" id="perfil_cliente" style="width: 100px; width: 100px;">
                                 </td>
                             </tr>
                             <tr>
