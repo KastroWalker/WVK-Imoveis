@@ -64,6 +64,7 @@
                         <form action="gerencia_cliente.php?acao=deletar" method="POST">
                             <div class="modal-body">
                                 <input type="hidden" name="delete_id" id="delete_id">
+                                <input type="hidden" name="img_perfil" id="img_perfil">
                                 <h4> Você tem certeza que deseja apagar esse Cliente? </h4>
                             </div>
                             <div class="modal-footer">
@@ -127,7 +128,6 @@
                             <tr>
                                 <td style="border-right: none;">
                                     <h3 >Infomações Cliente</h3>
-                                    
                                 </td>
                                 <td class="d-flex justify-content-end" style="border: none;">
                                     <button class="btn btn_close">
@@ -225,6 +225,7 @@
 
                 console.log(data);  
                 document.getElementById("delete_id").value = data[3];
+                document.getElementById("img_perfil").value = data[8];
             });
         });
     </script>

@@ -49,7 +49,18 @@
 
         header('Location: cadastra_cliente.php');
     }else if($acao == "deletar"){
+        function apaga_arquivo($arquivo){
+            $arquivo_delete = '../../../img/perfil_clientes/'.$arquivo;
+            if(unlink($arquivo_delete)){
+                return true;
+            }else{
+                return false;
+            }
+        }
         $cliente_id = $_POST['delete_id'];
+        $img = $_POST['img_perfil'];
+
+        apaga_arquivo($img);
 
         $cliente = new Cliente_Control();
 
