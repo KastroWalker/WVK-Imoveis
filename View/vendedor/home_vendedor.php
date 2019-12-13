@@ -26,7 +26,7 @@
         }
     </style>
 </head>
-<body class="bg-info">
+<body>
     <div class="d-flex" id="wrapper">
         <?php 
             slideBar("../../img/icon.webp", $icons,"home_vendedor.php", "clientes/clientes.php", "aluguel/aluguel.php", "imoveis/imoveis.php", "usuario/usuario.php", "../../Control/logout.php");
@@ -39,13 +39,13 @@
                 </nav>
             </header>
             <div class="container-fluid">
-                <h2 class="d-flex justify-content-center text-white" style="margin-top: 15px;">
+                <h2 class="d-flex justify-content-center" style="margin-top: 15px;">
                     <?php 
                         mostra_turno();
                         echo "Seja Bem vindo(a) $nome_vendedor !";
                     ?>
                 </h2>
-                <h3 class="d-flex justify-content-center text-white">O que deseja fazer?</h3>
+                <h3 class="d-flex justify-content-center">O que deseja fazer?</h3>
                 <div style="margin-top: 30px;">
                     <div class="card-deck d-flex justify-content-center">
                         <div class="card border-warning mb-4" style="max-width: 30rem;">

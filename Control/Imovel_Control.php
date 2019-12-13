@@ -20,6 +20,15 @@
             return $dados;
         }
 
+        function verInfomacoes($id){
+            $sql = "select * from imovel where imovel_id = :id;";
+            $d = $this->conexao->Conectar();
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":id", $id);
+            $dados->execute();
+            return $dados;
+        }
+
         function cadastrar($endereco, $numero, $bairro, $cep, $complemento, $valor_imovel, $status, $img){
             $this->dados->setEndereco($this->dados->clear_string($endereco));
             $this->dados->setNumero($this->dados->clear_string($numero));
@@ -103,7 +112,7 @@
             }
         }
 
-        function escreve_imovel($img, $endereco, $numero, $cep, $status, $indice, $x){
+        function escreve_imovel($img, $endereco, $numero, $cep, $status, $indice, $x, $id){
             if ($status == '1') {
                 $status_imovel = "Ocupado";
             }else{
@@ -131,9 +140,19 @@
                                 <strong>Cep: </strong>
                                 <p>$cep</p>
                             </div>
-                        </div>
-                    </div>
             ";
+            if($status_imovel == 'Ocupado'){
+                $string = $string."
+                <button class='btn btn-danger btn-alugar' disabled='disabled'>Alugar</button>
+                ";
+            }else{
+                $string = $string."
+                <button class='btn btn-success btn-alugar' value='$id'>Alugar</button>
+                ";
+            }
+            $string = $string."</div>
+                    </div>";
+
             if($indice == 1){
                 echo "<div class='card-deck d-flex justify-content-center'>";   
             }else if($indice % 4 == 0){

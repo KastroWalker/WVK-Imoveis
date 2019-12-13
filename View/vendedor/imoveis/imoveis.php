@@ -58,12 +58,13 @@
                             $indice = 1;
                             $x = 0;
                             foreach ($dados as $d) {
+                                $id = $d['imovel_id'];
                                 $img = $d['img_imovel'];
                                 $endereco = $d['endereco'];
                                 $numero = $d['numero'];
                                 $cep = $d['cep'];
                                 $status = $d['status'];
-                                $obj_imovel->escreve_imovel($img, $endereco, $numero, $cep, $status, $indice, $x);
+                                $obj_imovel->escreve_imovel($img, $endereco, $numero, $cep, $status, $indice, $x, $id);
                                 $indice++;
                                 $x++;
                             }
@@ -81,6 +82,13 @@
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
+        });
+        $(document).ready(function(){
+            $('.btn-alugar').on('click', function(e){
+                var id_imovel = e.target.value;
+                var pagina = "../aluguel/gera_aluguel.php?id=" + id_imovel;
+                window.location.href = pagina;
+            });
         });
     </script>
 </body>

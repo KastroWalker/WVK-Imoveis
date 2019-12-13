@@ -36,7 +36,7 @@
                     <button class="btn btn-primary" id="menu-toggle">Menu</button>
                 </nav>
                 <?php
-                menu("Aluguel", "aluguel.php", "Cadastrar", "cadastra_aluguel.php");
+                menu("Aluguel", "aluguel.php", "Cadastrar", "#");
                 ?>
             </header>
             <div class="container-fluid">

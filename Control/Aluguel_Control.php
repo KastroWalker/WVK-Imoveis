@@ -39,6 +39,17 @@
             }
         }
 
+        function mudaStatus($id, $status){
+            $d = $this->conexao->Conectar();
+
+            $sql = "update imovel set status = :status where imovel_id = :id";
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":id", $id);
+            $dados->bindValue(":status", $status);
+
+            $dados->execute();
+        }
+
         function cadastrar($data_inicial, $data_final, $valor_aluguel, $vendedor_id, $cliente_id, $imovel_id){
 
             $this->dados->setDataInicial($this->dados->clear_string($data_inicial));
