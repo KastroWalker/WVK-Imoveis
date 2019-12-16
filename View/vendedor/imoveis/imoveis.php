@@ -50,10 +50,32 @@
                 ?>
             </header>
             <div class="container-fluid">
+                <!-- Modal Delete -->
+                <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Apagar Imóvel</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="gerencia_imovel.php?acao=deletar" method="POST">
+                                <div class="modal-body">
+                                    <input type="hidden" name="delete_id" id="delete_id">
+                                    <h4> Você tem certeza que deseja apagar esse Imóvel? </h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Não </button>
+                                    <button type="submit" name="deletedata" class="btn btn-danger"> Sim, deletar!</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div id="div_aluguel">
                     <h2 style="text-align: center;">Imóveis</h2>
                     <div>
-                        
                         <?php
                             $indice = 1;
                             $x = 0;
@@ -88,6 +110,16 @@
                 var id_imovel = e.target.value;
                 var pagina = "../aluguel/gera_aluguel.php?id=" + id_imovel;
                 window.location.href = pagina;
+            });
+            $('.btn-informacao').on('click', function(e){
+                var id_imovel = e.target.value;
+                var pagina = "informacoes.php?id=" + id_imovel;
+                window.location.href = pagina;
+            });
+            $('.btn-delete').on('click', function(e){
+                var id_imovel = e.target.value;
+                $('#deletemodal').modal('show');
+                document.getElementById("delete_id").value = id_imovel;
             });
         });
     </script>

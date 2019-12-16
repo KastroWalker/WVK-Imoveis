@@ -1,0 +1,46 @@
+h2{
+    margin-top: 20px;
+}
+
+.Desocupado{
+    color: green;
+    font-weight: bold;
+}
+
+.Ocupado{
+    color: red;
+    font-weight: bold;
+}
+
+.info_imovel{
+    width: 80%;
+    margin: auto;
+}
+
+.div_btn{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.validate{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: solid 1px #00C4FF;
+    height: 35px;
+    background: none;
+    margin-left: 9px;
+}
+
+#lista_informacoes{
+    margin-top: 15px;
+}
+
+#edita_imovel{
+    display: none;
+}
+
+#desabled{
+    pointer-events:none;
+    outline:none;
+}

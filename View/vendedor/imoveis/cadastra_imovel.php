@@ -46,7 +46,7 @@
                 ?>
             </header>
             <div class="container-fluid">
-                <div id="div_cadastro_clientes">
+                <div id="div_cadastro_imovel">
                     <h2 style="text-align: center;">Cadastro Imóvel</h2>
                     <?php 
                         if(isset($_SESSION['imovel_cadastrado'])){
@@ -68,7 +68,6 @@
                         unset($_SESSION['imovel_nao_cadastrado']);
                     ?>
                     <form method="POST" action="cadastrar_imovel.php?acao=cadastrar" enctype="multipart/form-data">
-                        <input type="hidden" value="<?php echo $id_vendedor; ?>" name="campo_id" id="id">
                         <div class="form-group">
                             <label for="endereco">Endereço: *</label>
                             <input type="text" name="campo_endereco" id="endereco" class="form-control">

@@ -143,14 +143,17 @@
             ";
             if($status_imovel == 'Ocupado'){
                 $string = $string."
-                <button class='btn btn-danger btn-alugar' disabled='disabled'>Alugar</button>
+                <button class='btn btn-success btn-alugar' disabled='disabled'>Alugar</button>
                 ";
             }else{
                 $string = $string."
                 <button class='btn btn-success btn-alugar' value='$id'>Alugar</button>
                 ";
             }
-            $string = $string."</div>
+            $string = $string."
+                            <button class='btn btn-info btn-informacao' value='$id'>Informações</button>
+                            <button class='btn btn-danger btn-delete' value='$id'>Apagar</button>
+                        </div>
                     </div>";
 
             if($indice == 1){

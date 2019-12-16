@@ -55,3 +55,11 @@ create table aluguel(
     foreign key(cliente_id) references cliente(cliente_id),
     foreign key(imovel_id) references imovel(imovel_id)
 );
+
+create table img_casa(
+    img_id int not null auto_increment,
+    imovel_id int not null,
+    link_img varchar(100),
+    primary key(img_id),
+    foreign key(imovel_id) references imovel(imovel_id)
+);
