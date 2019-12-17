@@ -32,12 +32,21 @@ h2{
     margin-left: 9px;
 }
 
+.btn-warning{
+    margin-top: 15px;
+}
+
 #lista_informacoes{
     margin-top: 15px;
 }
 
 #edita_imovel{
     display: none;
+}
+
+#imagem_imovel{
+    display: none;
+    margin-top: 20px;
 }
 
 #desabled{

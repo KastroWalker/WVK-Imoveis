@@ -1,10 +1,29 @@
 <?php
     include '../menu.php';
-    
+    include '../../../Control/Imovel_Control.php';      
+
     $id = $_REQUEST['id'];
     
     $icons = array('../../../img/menu_icon/icon-client-20.png', '../../../img/menu_icon/icon-rent-20.png', '../../../img/menu_icon/icon-home-20.png', '../../../img/menu_icon/icon-user-20.png', '../../../img/menu_icon/icon-exit-20.png');
-    #$icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
+    
+    $obj_imovel = new Imovel_Control();
+    $dados = $obj_imovel->verDados();
+    
+    foreach ($dados as $d) {
+        $endereco = $d['endereco'];
+        $numero = $d['numero'];
+        $bairro = $d['bairro'];
+        $cep = $d['cep'];
+        $complemento = $d['complemento'];
+        $valor = $d['valor_imovel'];
+        $status = $d['status'];
+        if($status == '0'){
+            $status = 'Desocupado';
+        }else{
+            $status = 'Ocupado'; 
+        }
+        $img = $d['img_imovel'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -25,26 +44,6 @@
 </head>
 
 <body>
-    <?php
-        include('../../../Control/Imovel_Control.php');
-        $obj_imovel = new Imovel_Control();
-        $dados = $obj_imovel->verDados();
-        foreach ($dados as $d) {
-            $endereco = $d['endereco'];
-            $numero = $d['numero'];
-            $bairro = $d['bairro'];
-            $cep = $d['cep'];
-            $complemento = $d['complemento'];
-            $valor = $d['valor_imovel'];
-            $status = $d['status'];
-            if($status == '0'){
-                $status = 'Desocupado';
-            }else{
-                $status = 'Ocupado'; 
-            }
-            $img = $d['img_imovel'];
-        }
-    ?>
     <div class="d-flex" id="wrapper">
         <?php
         slideBar("../../../img/icon.webp", $icons, "../home_vendedor.php", "../clientes/clientes.php", "../aluguel/aluguel.php", "imoveis.php", "../usuario/usuario.php", "../../../Control/Vendedor_Control.php?acao=logout");
@@ -82,6 +81,9 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
+                    
+                    <button class="btn btn-warning">Adicionar Imagem</button>
+
                     <dl id="lista_informacoes">
                         <div>
                             <dt>Id: </dt>
@@ -121,6 +123,37 @@
                         <button class="btn btn-danger">Apagar</button>
                     </div>
                 </div>
+
+                <div id="imagem_imovel" class="info_imovel">
+                    <table class='table table-bordered table-hover'>
+                        <tr>
+                            <td style="border-right: none;">
+                                <h3>Adiconar Imagem</h3>
+                            </td>
+                            <td class="d-flex justify-content-end" style="border: none;">
+                                <button class="btn btn_close_edit">
+                                    <img src="../../../img/icon-fechar.png" style="width: 25px; height: 25px;">
+                                </button>        
+                            </td>
+                        </tr>
+
+                        <form action="gerencia_imagens.php?acao=cadastrar" method="POST" enctype="multipart/form-data">
+                            <tr>
+                                <td colspan="2">
+                                    <label for="img" class='col-sm-3'>Imagem: </label>
+                                    <input type="file" name="arquivo" id="img" class="validate col-sm-9">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button class="btn btn-success">Adicionar</button>
+                                    <button class="btn btn-primary">Cancelar</button>
+                                </td>
+                            </tr>
+                        </form>
+                    </table>
+                </div>
+
                 <div id="edita_imovel" class="info_imovel">
                     <table class='table table-bordered table-hover'>
                         <tr>
@@ -136,9 +169,7 @@
 
                         <form action="gerencia_imovel.php?acao=editar" method="POST" enctype="multipart/form-data">
                             <tr>
-                                <input type="hidden" id="img_perfil_atual" name="img_perfil">
-                                <input type="hidden" id="cliente_id" name="cliente_id">
-                                <input type='hidden' name="campo_senha" id="campo_senha">
+                                <input type="hidden" id="imovel_id" name="<?php echo$id?>">
                                 <td colspan="2">
                                     <label for="endereco" class='col-sm-3'>Endereço: *</label>
                                     <input type="text" name="campo_endereco" id="endereco" class="validate  col-sm-9" value="<?php echo$endereco; ?>">

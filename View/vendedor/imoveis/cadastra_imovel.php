@@ -67,7 +67,7 @@
                         }
                         unset($_SESSION['imovel_nao_cadastrado']);
                     ?>
-                    <form method="POST" action="cadastrar_imovel.php?acao=cadastrar" enctype="multipart/form-data">
+                    <form method="POST" action="gerencia_imovel.php?acao=cadastrar" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="endereco">Endereço: *</label>
                             <input type="text" name="campo_endereco" id="endereco" class="form-control">

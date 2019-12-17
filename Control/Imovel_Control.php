@@ -100,15 +100,19 @@
 
             $d = $this->conexao->Conectar();
 
-            $sql = "delete * from imovel where imovel_id = :imovel_id";
+            $sql = "delete from imovel where imovel_id = :imovel_id";
 
             $dados = $d->prepare($sql);
+
             $dados->bindValue(":imovel_id", $this->dados->getImovelId());
 
             try {
                 $dados->execute();
+                return true;
             } catch (PDOException $e) {
                 echo "Erro ao apagar " . $e->getMessage();
+                $_SESSION['imovel_nao_excluido'] = true;
+                return false;
             }
         }
 

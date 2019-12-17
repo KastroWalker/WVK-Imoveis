@@ -48,6 +48,15 @@
             $_SESSION['imovel_cadastrado'] = true;
         }
         header("Location: cadastra_imovel.php");
+    }else if($acao == "deletar"){
+        $imovel_id = @$_POST['delete_id'];
+        echo $imovel_id;
+        $imovel = new Imovel_Control();
+
+        if($imovel->deletar($imovel_id)){
+            $_SESSION['imovel_excluido'] = true;
+        }
+        header('Location: imoveis.php');
     }
 
 ?>

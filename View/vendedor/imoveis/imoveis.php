@@ -1,7 +1,6 @@
 <?php
     include '../menu.php';
     $icons = array('../../../img/menu_icon/icon-client-20.png', '../../../img/menu_icon/icon-rent-20.png', '../../../img/menu_icon/icon-home-20.png', '../../../img/menu_icon/icon-user-20.png', '../../../img/menu_icon/icon-exit-20.png');
-    #$icons = array('../../../img/menu_icon/icon-client.png', '../../../img/menu_icon/icon-rent.png', '../../../img/menu_icon/icon-home.png', '../../../img/menu_icon/icon-user-male.png', '../../../img/menu_icon/icon-exit.png');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -75,6 +74,24 @@
                 </div>
                 <div id="div_aluguel">
                     <h2 style="text-align: center;">Imóveis</h2>
+                    <?php 
+                        if(isset($_SESSION['imovel_excluido'])){
+                            echo "
+                                <div class='alert alert-success text-center'>
+                                    Imóvel Excluido com Sucesso!<br/>
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['imovel_excluido']);
+                        if(isset($_SESSION['imovel_nao_excluido'])){
+                            echo "
+                                <div class='alert alert-danger text-center'>
+                                    Erro ao excluir o Imóvel!
+                                </div>
+                            ";
+                        }
+                        unset($_SESSION['imovel_nao_excluido']);
+                    ?>
                     <div>
                         <?php
                             $indice = 1;
