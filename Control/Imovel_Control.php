@@ -1,6 +1,7 @@
 <?php
     include "../../../Model/Imovel_Model.php";
     include "../../../Banco/Conexao.php";
+
     session_start();
 
 	class Imovel_Control{
@@ -96,6 +97,29 @@
         }
 
         function deletar($imovel_id){
+            $z = $this->conexao->Conectar();
+
+            $sql = "select aluguel_id from aluguel where imovel_id = :id";
+
+            $dados = $z->prepare($sql);
+            $dados->bindValue(":id", $imovel_id);
+            $dados->execute();
+            $id_aluguel = null;
+
+            foreach ($dados as $d) {
+                $id_aluguel = $d['aluguel_id'];
+            }
+
+            if(isset($id_aluguel)){
+                $x = $this->conexao->Conectar();
+
+                $sql = "delete from aluguel where aluguel_id = :id";
+
+                $dados = $x->prepare($sql);
+                $dados->bindValue(":id", $id_aluguel);
+                $dados->execute();
+            }
+
             $this->dados->setImovelId($imovel_id);
 
             $d = $this->conexao->Conectar();
