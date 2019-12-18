@@ -42,7 +42,7 @@
                 unset($_SESSION['user_nao_cadastrado']);
             ?>
             <div id="div_cadastro">
-                <form action="../Control/Vendedor_Control.php?acao=cadastrar" method="POST">
+                <form action="../Control/Cliente_Control.php?acao=cadastrar" method="POST">
                     <div class="form-group">
                         <label for="nome">Nome: *</label>
                         <input type="text" id="nome" name="campo_nome" class="form-control">
@@ -54,6 +54,10 @@
                     <div class="form-group">
                         <label for="email">E-mail: *</label>
                         <input type="text" id="email" name="campo_email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Cpf: *</label>
+                        <input type="cpf" id="cpf" name="campo_cpf" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="user">Usuário: *</label>

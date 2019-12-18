@@ -1,6 +1,6 @@
 <?php
-    include "../../../Model/Cliente_Model.php";
-    include "../../../Banco/Conexao.php";
+    include "../Model/Cliente_Model.php";
+    include "../Banco/Conexao.php";
 
     session_start();
 	
@@ -48,6 +48,34 @@
                 echo "Erro ao cadastrar: ". $e->getMessage();
                 $_SESSION['cliente_nao_cadastrado'] = true;
                 return false;
+            }
+        }
+
+        function logar($user, $senha){
+            $this->dados->setUser($user);
+            $this->dados->setSenha($senha);
+
+            $sql = "select cliente_id, user, nome from cliente where user = :user and senha = :senha;";
+
+            $d = $this->conexao->Conectar();
+            $dados = $d->prepare($sql);
+            $dados->bindValue(":user", $this->dados->getUser());
+            $dados->bindValue(":senha", $this->dados->getSenha());
+            $dados->execute();
+            
+            $users = $dados->fetchAll();
+            
+            if(count($users) <= 0){
+                $_SESSION['nao_cadastrado'] = true;
+
+                header('Location: ../View/login.php');
+            }else{
+                $user = $users[0];
+
+                $_SESSION['vendedor_id'] = $user['vendedor_id'];
+                $_SESSION['nome_vendedor'] = $user['nome'];
+
+                header('Location: ../View/cliente/index.php');
             }
         }
 
@@ -103,5 +131,41 @@
                 $_SESSION['cliente_nao_excluido'] = true;
             }
         }
+    }
+
+
+    @$acao = $_REQUEST['acao'];
+    
+    if($acao == "cadastrar"){
+        $nome = $_POST['campo_nome'];
+        $contato = $_POST['campo_contato'];
+        $email = $_POST['campo_email'];
+        $cpf = $_POST['campo_cpf'];
+        $user = $_POST['campo_user'];
+        $senha = $_POST['campo_senha'];
+        $img = 'icons-user.png';
+
+        echo $nome."<br>";
+        echo $contato."<br>";
+        echo $email."<br>";
+        echo $user."<br>";
+        echo $senha."<br>";
+
+        
+        $vendedor = new Cliente_Control();
+
+        if($vendedor->cadastrar($nome, $contato, $cpf, $email, $user, $senha, $img)){
+            $_SESSION['user_cadastrado'] = true;
+        }
+
+        header('Location: ../View/cadastro.php');
+    }else if($acao == "logar"){
+        echo "teste<br>";
+        $user = $_POST['campo_usuario'];
+        $senha = $_POST['campo_senha'];
+
+        $vendedor = new Cliente_Control();
+
+        $vendedor->logar($user, $senha);
     }
 ?>
